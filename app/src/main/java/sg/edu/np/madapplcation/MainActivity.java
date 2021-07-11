@@ -26,12 +26,18 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView newUser;
     private Button loginButton;
-    DBHelper dbHelper = new DBHelper(this);
+    EditText username, password;
+    DBHelper DB;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        username = (EditText) findViewById(R.id.editText_UserName);
+        password = (EditText) findViewById(R.id.editText_Password);
+        DB = new DBHelper(this);
 
         SharedPreferences preferences = getSharedPreferences("madapp", Context.MODE_PRIVATE);
         boolean loginSkip = preferences.getBoolean("skip", false);
@@ -48,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         newUser = findViewById(R.id.textView_NewUser);
-        newUser.setOnTouchListener(new View.OnTouchListener(){
+        newUser.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionevent){
+            public boolean onTouch(View view, MotionEvent motionevent) {
                 Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
@@ -59,29 +65,31 @@ public class MainActivity extends AppCompatActivity {
         });
 
         loginButton = findViewById(R.id.button);
-        loginButton.setOnClickListener(new View.OnClickListener(){
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
 
-                EditText etUsername = findViewById(R.id.editText_UserName);
-                EditText etPassword = findViewById(R.id.editText_Password);
+                String user = username.getText().toString();
+                String pass = password.getText().toString();
 
-                if(isValidCredentials(etUsername.getText().toString(), etPassword.getText().toString()))
-                {
-                    Intent intent = new Intent(MainActivity.this, ListActivity.class);
-                    startActivity(intent);
-                    Toast.makeText(MainActivity.this, "Valid Account", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    Toast.makeText(MainActivity.this, "Invalid Username / Password", Toast.LENGTH_SHORT).show();
+                if (user.equals("") || pass.equals(""))
+                    Toast.makeText(MainActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
+                else {
+                    Boolean checkuserpass = DB.checkusernamepassword(user, pass);
+                    if (checkuserpass == true) {
+                        Toast.makeText(MainActivity.this, "Sign in successfull", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(MainActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
 
     }
 
-    public boolean isValidCredentials(String username, String password){
+    public boolean isValidCredentials(String username, String password) {
 //        UserData dbData = dbHelper.checkusername(username);
 //        if(dbData.getUsername().equals(username) && dbData.getPassword().equals(password))
 //        {
@@ -95,5 +103,4 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, ListActivity.class);
         startActivity(intent);
     }
-
 }
