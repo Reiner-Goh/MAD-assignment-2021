@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView newUser;
     private Button loginButton;
+    DBHelper dbHelper = new DBHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,11 +82,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean isValidCredentials(String username, String password){
-        //soon once db is completed
-/*        if()
-        {
-            return true;
-        }*/
+//        UserData dbData = dbHelper.checkusername(username);
+//        if(dbData.getUsername().equals(username) && dbData.getPassword().equals(password))
+//        {
+//            return true;
+//        }
 
         return false;
     }
