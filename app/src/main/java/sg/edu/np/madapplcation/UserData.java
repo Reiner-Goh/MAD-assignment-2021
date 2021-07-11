@@ -21,9 +21,7 @@ public class UserData {
         Username = username;
     }
 
-    public String getPassword() {
-        return Password;
-    }
+    public String getPassword() { return Password; }
 
     public void setPassword(String password) {
         Password = password;
