@@ -43,7 +43,7 @@ public class MainActivity2 extends AppCompatActivity {
                             dbUserData.setPassword(password.getText().toString());
                             DB.addUser(dbUserData);
                             Toast.makeText(MainActivity2.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                             startActivity(intent);
                         }else{
                             Toast.makeText(MainActivity2.this, "Registration failed", Toast.LENGTH_SHORT).show();
