@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DBNAME = "Login.db";
@@ -27,6 +25,16 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    public void addUser(UserData userData)
+    {
+        ContentValues values = new ContentValues();
+        values.put("username", userData.getUsername());
+        values.put("password", userData.getPassword());
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.insert("users", null,values);
+        db.close();
+    }
+
     public Boolean insertData(String username, String password){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -40,7 +48,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Boolean checkusername(String username){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("Select * from uses where username = ?", new String[] {username});
+        Cursor cursor = db.rawQuery("Select * from users where username = ?", new String[] {username});
         if(cursor.getCount()>0)
             return true;
         else
