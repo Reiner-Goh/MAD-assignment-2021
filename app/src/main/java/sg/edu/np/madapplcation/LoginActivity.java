@@ -32,19 +32,19 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.editText_Password);
         DB = new DBHelper(this);
 
-        SharedPreferences preferences = getSharedPreferences("madapp", Context.MODE_PRIVATE);
-        boolean loginSkip = preferences.getBoolean("skip", false);
-
-        CheckBox rmbBox = findViewById(R.id.checkBoxRmb);
-        rmbBox.setChecked(loginSkip);
-        rmbBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            preferences.edit().putBoolean("skip", isChecked).apply();
-            remembered();
-        });
-
-        if (loginSkip) {
-            remembered();
-        }
+//        SharedPreferences preferences = getSharedPreferences("madapp", Context.MODE_PRIVATE);
+//        boolean loginSkip = preferences.getBoolean("skip", false);
+//
+////        CheckBox rmbBox = findViewById(R.id.checkBoxRmb);
+////        rmbBox.setChecked(loginSkip);
+////        rmbBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+////            preferences.edit().putBoolean("skip", isChecked).apply();
+////            remembered();
+////        });
+////
+////        if (loginSkip) {
+////            remembered();
+////        }
 
         TextView newUser = findViewById(R.id.textView_NewUser);
         newUser.setOnTouchListener((view, motionevent) -> {
