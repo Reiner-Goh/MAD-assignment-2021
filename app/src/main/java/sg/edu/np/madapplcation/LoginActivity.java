@@ -1,7 +1,6 @@
 package sg.edu.np.madapplcation;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,8 +17,14 @@ public class LoginActivity extends AppCompatActivity {
     private final String TAG = "MADApp";
     private final String FILENAME = "MainActivity.java";
 
-    EditText username, password;
-    DBHelper DB;
+    private String username,password;
+    private EditText editUsername, editPassword;
+    private DBHelper DB;
+    private CheckBox rmbBox;
+    private Button login;
+    private SharedPreferences loginPreferences;
+    private SharedPreferences.Editor loginPrefsEditor;
+    private Boolean rememberMe;
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -28,23 +33,19 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        username = (EditText) findViewById(R.id.editText_UserName);
-        password = (EditText) findViewById(R.id.editText_Password);
+        editUsername = (EditText) findViewById(R.id.editText_UserName);
+        editPassword = (EditText) findViewById(R.id.editText_Password);
         DB = new DBHelper(this);
+        rmbBox = (CheckBox)findViewById(R.id.checkBoxRmb);
+        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        loginPrefsEditor = loginPreferences.edit();
 
-//        SharedPreferences preferences = getSharedPreferences("madapp", Context.MODE_PRIVATE);
-//        boolean loginSkip = preferences.getBoolean("skip", false);
-//
-////        CheckBox rmbBox = findViewById(R.id.checkBoxRmb);
-////        rmbBox.setChecked(loginSkip);
-////        rmbBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-////            preferences.edit().putBoolean("skip", isChecked).apply();
-////            remembered();
-////        });
-////
-////        if (loginSkip) {
-////            remembered();
-////        }
+        rememberMe = loginPreferences.getBoolean("rememberMe", false);
+        if (rememberMe) {
+            editUsername.setText(loginPreferences.getString("username", ""));
+            editPassword.setText(loginPreferences.getString("password", ""));
+            rmbBox.setChecked(true);
+        }
 
         TextView newUser = findViewById(R.id.textView_NewUser);
         newUser.setOnTouchListener((view, motionevent) -> {
@@ -54,30 +55,32 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         });
 
-        Button loginButton = findViewById(R.id.button);
-        loginButton.setOnClickListener(view -> {
+        login = findViewById(R.id.loginButton);
+        login.setOnClickListener(view -> {
 
-            String user = username.getText().toString();
-            String pass = password.getText().toString();
+            username = editUsername.getText().toString();
+            password = editPassword.getText().toString();
 
-            if (user.equals("") || pass.equals(""))
+            if (username.equals("") || password.equals(""))
                 Toast.makeText(LoginActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
             else {
-                Boolean checkuserpass = DB.checkusernamepassword(user, pass);
+                Boolean checkuserpass = DB.checkusernamepassword(username, password);
                 if (checkuserpass) {
                     Toast.makeText(LoginActivity.this, "Sign in successful", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                    if (rmbBox.isChecked()) {
+                        loginPrefsEditor.putBoolean("rememberMe", true);
+                        loginPrefsEditor.putString("username", username);
+                        loginPrefsEditor.putString("password", password);
+                    } else {
+                        loginPrefsEditor.clear();
+                    }
+                    loginPrefsEditor.commit();
                     startActivity(intent);
                 } else {
                     Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-    }
-
-    private void remembered() {
-        Intent intent = new Intent(LoginActivity.this, ListActivity.class);
-        startActivity(intent);
     }
 }
