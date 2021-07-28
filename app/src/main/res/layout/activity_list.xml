@@ -21,8 +21,9 @@
 
     <EditText
         android:id="@+id/search_bar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="376dp"
+        android:layout_height="46dp"
+        android:backgroundTint="#FFFFFF"
         android:ems="10"
         android:hint="Search concept"
         android:inputType="textPersonName"

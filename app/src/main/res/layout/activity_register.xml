@@ -9,6 +9,10 @@
 
     <TextView
         android:id="@+id/textView6"
+        android:shadowColor="#000000"
+        android:shadowRadius="2"
+        android:shadowDx="1"
+        android:shadowDy="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/vt323"
@@ -24,14 +28,16 @@
         app:layout_constraintVertical_bias="0.158" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/editText_RegUserName"
         android:layout_width="345dp"
         android:layout_height="47dp"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
+        android:fontFamily="@font/vt323"
         android:hint="User Name"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,15 +45,18 @@
         app:layout_constraintVertical_bias="0.299" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/editText_RegPassword"
         android:layout_width="345dp"
         android:layout_height="47dp"
-        android:layout_below="@+id/username"
+        android:layout_below="@+id/editText_RegUserName"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
+        android:fontFamily="@font/vt323"
         android:hint="Password"
+        android:inputType="textPassword"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,15 +64,18 @@
         app:layout_constraintVertical_bias="0.407" />
 
     <EditText
-        android:id="@+id/repassword"
+        android:id="@+id/editText_RegRePassword"
         android:layout_width="345dp"
         android:layout_height="47dp"
-        android:layout_below="@+id/password"
+        android:layout_below="@+id/editText_RegPassword"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
+        android:fontFamily="@font/vt323"
         android:hint="Retype Password"
+        android:inputType="textPassword"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,10 +86,12 @@
         android:id="@+id/btnsignup"
         android:layout_width="345dp"
         android:layout_height="47dp"
-        android:layout_below="@+id/repassword"
+        android:layout_below="@+id/editText_RegRePassword"
         android:background="@drawable/border"
+        android:fontFamily="@font/vt323"
         android:text="Register"
         android:textColor="#082c3c"
+        android:textSize="20sp"
         app:backgroundTint="#000000"
         app:backgroundTintMode="add"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -92,8 +106,10 @@
         android:layout_height="47dp"
         android:layout_below="@+id/btnsignup"
         android:background="@drawable/border"
+        android:fontFamily="@font/vt323"
         android:text="Existing user! Go to Sign in page"
         android:textColor="#082c3c"
+        android:textSize="20sp"
         app:backgroundTint="#000000"
         app:backgroundTintMode="add"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -101,5 +117,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.817" />
+
+    <TextView
+        android:id="@+id/textView_ShowPass2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/vt323"
+        android:text="Reveal passwords"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.588" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

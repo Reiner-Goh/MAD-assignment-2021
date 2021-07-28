@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.icu.text.Edits;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -27,12 +26,12 @@ public class ListActivity extends AppCompatActivity {
 
 
         conceptList.add(new Concept("Introduction to Android","Learning about android and android studio"));
-        conceptList.add(new Concept("Introduction to java","Learning about java programming language"));
-        conceptList.add(new Concept("Basic of activity","Learn what are activities, the building blocks of any app"));
+        conceptList.add(new Concept("Introduction to Java","Learning about java programming language"));
+        conceptList.add(new Concept("Basic of Activity","Learn what are activities, the building blocks of any app"));
         conceptList.add(new Concept("Android Activity Lifecycle","Learn about how activities get created, started, and resumed as well as paused, stopped and destroyed"));
-        conceptList.add(new Concept("Visual and Audio","learn how to add videos and audio clips into your apps"));
+        conceptList.add(new Concept("Visual and Audio","Learn how to add videos and audio clips into your apps"));
         conceptList.add(new Concept("Event Handling","Learn new event listeners and respective code to run on actions like clicking"));
-        conceptList.add(new Concept("RecyclerView","Learn how to make a recycvlerView"));
+        conceptList.add(new Concept("RecyclerView","Learn how to make a recyclerView"));
         conceptList.add(new Concept("Designing of Mobile User Experience","Learn how to design for users in mind"));
         conceptList.add(new Concept("Data and File Storage","Learn shared preferences, SQL database and more"));
         conceptList.add(new Concept("Managing Play Store Release","Learn how to publish your app to the Google Play Store"));
