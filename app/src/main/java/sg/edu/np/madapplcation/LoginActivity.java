@@ -60,14 +60,14 @@ public class LoginActivity extends AppCompatActivity {
         TextView showPass = findViewById(R.id.textView_ShowPass);
         showPass.setOnClickListener(v -> {
 
-            if(showPass.getText().equals("Hide"))
+            if(showPass.getText().equals("Hide password"))
             {
-                showPass.setText("Show");
+                showPass.setText("Reveal password");
                 editPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
             }
-            else if(showPass.getText().equals("Show"))
+            else if(showPass.getText().equals("Reveal password"))
             {
-                showPass.setText("Hide");
+                showPass.setText("Hide password");
                 editPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
             }
         });
@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                 Boolean checkuserpass = DB.checkusernamepassword(username, password);
                 if (checkuserpass) {
                     Toast.makeText(LoginActivity.this, "Sign in successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), InfoActivity.class);
                     if (rmbBox.isChecked()) {
                         loginPrefsEditor.putBoolean("rememberMe", true);
                         loginPrefsEditor.putString("username", username);

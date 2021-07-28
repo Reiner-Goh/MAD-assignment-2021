@@ -2,33 +2,54 @@ package sg.edu.np.madapplcation;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText username, password, repassword;
-    Button signup, signin;
-    DBHelper DB;
+    private String user, pass, repass;
+    private EditText regEditUsername, regEditPassword, regEditRePassword;
+    private Button signup, signin;
+    private DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        username = (EditText) findViewById(R.id.username);
-        password = (EditText) findViewById(R.id.password);
-        repassword = (EditText) findViewById(R.id.repassword);
+        regEditUsername = (EditText) findViewById(R.id.editText_RegUserName);
+        regEditPassword = (EditText) findViewById(R.id.editText_RegPassword);
+        regEditRePassword = (EditText) findViewById(R.id.editText_RegRePassword);
         signup = (Button) findViewById(R.id.btnsignup);
         signin = (Button) findViewById(R.id.btnsignin);
         DB = new DBHelper(this);
 
+        TextView showPass2 = findViewById(R.id.textView_ShowPass2);
+        showPass2.setOnClickListener(v -> {
+
+            if(showPass2.getText().equals("Hide passwords"))
+            {
+                showPass2.setText("Reveal passwords");
+                regEditPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                regEditRePassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+            else if(showPass2.getText().equals("Reveal passwords"))
+            {
+                showPass2.setText("Hide passwords");
+                regEditPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                regEditRePassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
+        });
+
         signup.setOnClickListener(view -> {
-            String user = username.getText().toString();
-            String pass = password.getText().toString();
-            String repass = repassword.getText().toString();
+            user = regEditUsername.getText().toString();
+            pass = regEditPassword.getText().toString();
+            repass = regEditRePassword.getText().toString();
 
             if(user.equals("")||pass.equals("")||repass.equals(""))
                 Toast.makeText(RegisterActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
@@ -39,8 +60,8 @@ public class RegisterActivity extends AppCompatActivity {
                         Boolean insert = DB.insertData(user, pass);
                         if(insert){
                             UserData dbUserData = new UserData();
-                            dbUserData.setUsername(username.getText().toString());
-                            dbUserData.setPassword(password.getText().toString());
+                            dbUserData.setUsername(regEditUsername.getText().toString());
+                            dbUserData.setPassword(regEditPassword.getText().toString());
                             DB.addUser(dbUserData);
                             Toast.makeText(RegisterActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
