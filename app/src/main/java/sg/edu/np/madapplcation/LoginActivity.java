@@ -4,29 +4,42 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
+import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LoginActivity extends AppCompatActivity {
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+import org.w3c.dom.Text;
+
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private final String TAG = "MADApp";
     private final String FILENAME = "MainActivity.java";
 
+    private TextView register;
+
     private String username,password;
-    private EditText editUsername, editPassword;
+    private EditText editTextEmail, editTextPassword;
     private DBHelper DB;
     private CheckBox rmbBox;
     private Button login;
     private SharedPreferences loginPreferences;
     private SharedPreferences.Editor loginPrefsEditor;
     private Boolean rememberMe;
+    private FirebaseAuth mAuth;
+    private ProgressBar progressBar;
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -35,41 +48,36 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        editUsername = (EditText) findViewById(R.id.editText_UserName);
-        editPassword = (EditText) findViewById(R.id.editText_Password);
-        DB = new DBHelper(this);
-        rmbBox = (CheckBox)findViewById(R.id.checkBoxRmb);
+        register = (TextView) findViewById(R.id.textView_NewUser);
+        register.setOnClickListener(this);
+
+        login = (Button) findViewById(R.id.loginButton);
+        login.setOnClickListener(this);
+
+        editTextEmail = (EditText) findViewById(R.id.Email_Addr);
+        editTextPassword = (EditText) findViewById(R.id.editText_Password);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        mAuth = FirebaseAuth.getInstance();
+        //DB = new DBHelper(this);
+        /*rmbBox = (CheckBox)findViewById(R.id.checkBoxRmb);
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         loginPrefsEditor = loginPreferences.edit();
 
         rememberMe = loginPreferences.getBoolean("rememberMe", false);
         if (rememberMe) {
-            editUsername.setText(loginPreferences.getString("username", ""));
-            editPassword.setText(loginPreferences.getString("password", ""));
+            editTextEmail.setText(loginPreferences.getString("username", ""));
+            editTextPassword.setText(loginPreferences.getString("password", ""));
             rmbBox.setChecked(true);
-        }
+        }*/
 
-        TextView newUser = findViewById(R.id.textView_NewUser);
+        /*TextView newUser = findViewById(R.id.textView_NewUser);
         newUser.setOnTouchListener((view, motionevent) -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
             return false;
-        });
-
-        TextView showPass = findViewById(R.id.textView_ShowPass);
-        showPass.setOnClickListener(v -> {
-
-            if(showPass.getText().equals("Hide"))
-            {
-                showPass.setText("Show");
-                editPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            }
-            else if(showPass.getText().equals("Show"))
-            {
-                showPass.setText("Hide");
-                editPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-            }
         });
 
         login = findViewById(R.id.loginButton);
@@ -97,6 +105,67 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });*/
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.textView_NewUser:
+                startActivity(new Intent(this, RegisterActivity.class));
+                break;
+            case R.id.loginButton:
+                UserLogin();
+                break;
+        }
+    }
+
+    private void UserLogin(){
+        String email = editTextEmail.getText().toString().trim();
+        String password = editTextPassword.getText().toString().trim();
+
+        if (email.isEmpty()){
+            editTextEmail.setError("Email is required!");
+            editTextEmail.requestFocus();
+            return;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            editTextEmail.setError("Please enter a valid email!");
+            editTextEmail.requestFocus();
+            return;
+        }
+
+        if (password.isEmpty()){
+            editTextPassword.setError("Please input a password!");
+            editTextPassword.requestFocus();
+            return;
+        }
+
+        if (password.length() < 6){
+            editTextPassword.setError("Min password length should be 6 characters!");
+            editTextPassword.requestFocus();
+            return;
+
+        }
+
+        progressBar.setVisibility(View.VISIBLE);
+
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if (task.isSuccessful()){
+                    Toast.makeText(LoginActivity.this, "Sign in successful", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this, ListActivity.class));
+                    progressBar.setVisibility(View.GONE);
+
+                }else{
+                    Toast.makeText(LoginActivity.this, "Failed to login! Please check your credentials!", Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.GONE);
+                }
+
             }
         });
     }
