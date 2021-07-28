@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ConceptViewHolder extends RecyclerView.ViewHolder {
     TextView concepttxt;
+    TextView conceptdesc;
 
     public ConceptViewHolder(View itemView){
         super(itemView);
         concepttxt = itemView.findViewById(R.id.ConceptText);
+        conceptdesc = itemView.findViewById(R.id.Description);
     }
 }
