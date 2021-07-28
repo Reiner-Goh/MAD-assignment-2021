@@ -1,3 +1,4 @@
+/*
 package sg.edu.np.madapplcation;
 
 import android.content.ContentValues;
@@ -64,3 +65,4 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
     }
 }
+*/
