@@ -24,15 +24,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import org.w3c.dom.Text;
-
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private final String TAG = "MADApp";
     private final String FILENAME = "MainActivity.java";
 
     private TextView register;
-    private String username,password;
+    private String email,password;
     private EditText editEmail, editPassword;
     private DBHelper DB;
     private CheckBox rmbBox;
@@ -56,7 +54,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         login = (Button) findViewById(R.id.loginButton);
         login.setOnClickListener(this);
 
-        editEmail = (EditText) findViewById(R.id.editText_UserName);
+        editEmail = (EditText) findViewById(R.id.editText_Email);
         editPassword = (EditText) findViewById(R.id.editText_Password);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
@@ -97,17 +95,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        username = editEmail.getText().toString();
+        email = editEmail.getText().toString();
         password = editPassword.getText().toString();
-
-        if (rmbBox.isChecked()) {
-            loginPrefsEditor.putBoolean("rememberMe", true);
-            loginPrefsEditor.putString("username", username);
-            loginPrefsEditor.putString("password", password);
-        } else {
-            loginPrefsEditor.clear();
-        }
-        loginPrefsEditor.commit();
 
         /*login = findViewById(R.id.loginButton);
         login.setOnClickListener(view -> {
@@ -187,7 +176,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 if (task.isSuccessful()){
                     Toast.makeText(LoginActivity.this, "Sign in successful", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, ListActivity.class));
+                    if (rmbBox.isChecked()) {
+                        loginPrefsEditor.putBoolean("rememberMe", true);
+                        loginPrefsEditor.putString("email", email);
+                        loginPrefsEditor.putString("password", password);
+                    } else {
+                        loginPrefsEditor.clear();
+                    }
+                    loginPrefsEditor.commit();
+                    startActivity(new Intent(LoginActivity.this, InfoActivity.class));
                     progressBar.setVisibility(View.GONE);
 
                 }else{
