@@ -24,6 +24,7 @@
 
     <EditText
         android:id="@+id/editText_Password"
+        android:inputType="textPassword"
         android:layout_width="345dp"
         android:layout_height="47dp"
         android:layout_below="@+id/editText_UserName"
@@ -78,6 +79,7 @@
         android:buttonTint="#FFFFFF"
         android:text="Remember me"
         android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.114"
@@ -98,5 +100,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.749" />
+
+    <TextView
+        android:id="@+id/textView_ShowPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.813"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.486"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

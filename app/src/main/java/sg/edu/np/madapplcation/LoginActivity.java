@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -53,6 +55,21 @@ public class LoginActivity extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
             return false;
+        });
+
+        TextView showPass = findViewById(R.id.textView_ShowPass);
+        showPass.setOnClickListener(v -> {
+
+            if(showPass.getText().equals("Hide"))
+            {
+                showPass.setText("Show");
+                editPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+            else if(showPass.getText().equals("Show"))
+            {
+                showPass.setText("Hide");
+                editPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
         });
 
         login = findViewById(R.id.loginButton);

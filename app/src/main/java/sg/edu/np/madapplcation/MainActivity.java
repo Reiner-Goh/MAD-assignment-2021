@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 goNext();
             }
-        }, 5000);
+        }, 3000);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 goNext();
             }
-        }, 5000);
+        }, 3000);
     }
 
     private void goNext() {
