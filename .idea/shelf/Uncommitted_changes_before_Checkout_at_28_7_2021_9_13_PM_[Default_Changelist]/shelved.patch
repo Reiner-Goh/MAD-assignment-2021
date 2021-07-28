@@ -1,0 +1,656 @@
+Index: app/src/main/res/layout/activity_register.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#082c3c\"\r\n    tools:context=\".RegisterActivity\">\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView6\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/vt323\"\r\n        android:scaleX=\"4\"\r\n        android:scaleY=\"4\"\r\n        android:text=\"MAD LAD\"\r\n        android:textColor=\"#FFFFFF\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.497\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.158\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/username\"\r\n        android:layout_width=\"345dp\"\r\n        android:layout_height=\"47dp\"\r\n        android:backgroundTint=\"#FFFFFF\"\r\n        android:ems=\"10\"\r\n        android:hint=\"User Name\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textColorHint=\"#FFFFFF\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.299\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/password\"\r\n        android:layout_width=\"345dp\"\r\n        android:layout_height=\"47dp\"\r\n        android:layout_below=\"@+id/username\"\r\n        android:backgroundTint=\"#FFFFFF\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Password\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textColorHint=\"#FFFFFF\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.407\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/repassword\"\r\n        android:layout_width=\"345dp\"\r\n        android:layout_height=\"47dp\"\r\n        android:layout_below=\"@+id/password\"\r\n        android:backgroundTint=\"#FFFFFF\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Retype Password\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textColorHint=\"#FFFFFF\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.519\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/btnsignup\"\r\n        android:layout_width=\"345dp\"\r\n        android:layout_height=\"47dp\"\r\n        android:layout_below=\"@+id/repassword\"\r\n        android:background=\"@drawable/border\"\r\n        android:text=\"Register\"\r\n        android:textColor=\"#082c3c\"\r\n        app:backgroundTint=\"#000000\"\r\n        app:backgroundTintMode=\"add\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.714\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/btnsignin\"\r\n        android:layout_width=\"345dp\"\r\n        android:layout_height=\"47dp\"\r\n        android:layout_below=\"@+id/btnsignup\"\r\n        android:background=\"@drawable/border\"\r\n        android:text=\"Existing user! Go to Sign in page\"\r\n        android:textColor=\"#082c3c\"\r\n        app:backgroundTint=\"#000000\"\r\n        app:backgroundTintMode=\"add\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.817\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_register.xml	(revision e2c891cce98d07e2a08aebceb907d920a27dea5f)
++++ app/src/main/res/layout/activity_register.xml	(date 1627477765903)
+@@ -29,7 +29,7 @@
+         android:layout_height="47dp"
+         android:backgroundTint="#FFFFFF"
+         android:ems="10"
+-        android:hint="User Name"
++        android:hint="Username"
+         android:textColor="#FFFFFF"
+         android:textColorHint="#FFFFFF"
+         app:layout_constraintBottom_toBottomOf="parent"
+@@ -39,13 +39,13 @@
+         app:layout_constraintVertical_bias="0.299" />
+ 
+     <EditText
+-        android:id="@+id/password"
++        android:id="@+id/email"
+         android:layout_width="345dp"
+         android:layout_height="47dp"
+         android:layout_below="@+id/username"
+         android:backgroundTint="#FFFFFF"
+         android:ems="10"
+-        android:hint="Password"
++        android:hint="Email"
+         android:textColor="#FFFFFF"
+         android:textColorHint="#FFFFFF"
+         app:layout_constraintBottom_toBottomOf="parent"
+@@ -55,13 +55,13 @@
+         app:layout_constraintVertical_bias="0.407" />
+ 
+     <EditText
+-        android:id="@+id/repassword"
++        android:id="@+id/password"
+         android:layout_width="345dp"
+         android:layout_height="47dp"
+-        android:layout_below="@+id/password"
++        android:layout_below="@+id/email"
+         android:backgroundTint="#FFFFFF"
+         android:ems="10"
+-        android:hint="Retype Password"
++        android:hint="Password"
+         android:textColor="#FFFFFF"
+         android:textColorHint="#FFFFFF"
+         app:layout_constraintBottom_toBottomOf="parent"
+@@ -71,10 +71,10 @@
+         app:layout_constraintVertical_bias="0.519" />
+ 
+     <Button
+-        android:id="@+id/btnsignup"
++        android:id="@+id/registerUser"
+         android:layout_width="345dp"
+         android:layout_height="47dp"
+-        android:layout_below="@+id/repassword"
++        android:layout_below="@+id/email"
+         android:background="@drawable/border"
+         android:text="Register"
+         android:textColor="#082c3c"
+@@ -90,7 +90,7 @@
+         android:id="@+id/btnsignin"
+         android:layout_width="345dp"
+         android:layout_height="47dp"
+-        android:layout_below="@+id/btnsignup"
++        android:layout_below="@+id/registerUser"
+         android:background="@drawable/border"
+         android:text="Existing user! Go to Sign in page"
+         android:textColor="#082c3c"
+@@ -102,4 +102,17 @@
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintVertical_bias="0.817" />
+ 
++    <ProgressBar
++        android:id="@+id/progressBar"
++        style="?android:attr/progressBarStyleLarge"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_centerInParent="true"
++        android:visibility="gone"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/sg/edu/np/madapplcation/RegisterActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sg.edu.np.madapplcation;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\npublic class RegisterActivity extends AppCompatActivity {\r\n\r\n    EditText username, password, repassword;\r\n    Button signup, signin;\r\n    DBHelper DB;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_register);\r\n        username = (EditText) findViewById(R.id.username);\r\n        password = (EditText) findViewById(R.id.password);\r\n        repassword = (EditText) findViewById(R.id.repassword);\r\n        signup = (Button) findViewById(R.id.btnsignup);\r\n        signin = (Button) findViewById(R.id.btnsignin);\r\n        DB = new DBHelper(this);\r\n\r\n        signup.setOnClickListener(view -> {\r\n            String user = username.getText().toString();\r\n            String pass = password.getText().toString();\r\n            String repass = repassword.getText().toString();\r\n\r\n            if(user.equals(\"\")||pass.equals(\"\")||repass.equals(\"\"))\r\n                Toast.makeText(RegisterActivity.this, \"Please enter all the fields\", Toast.LENGTH_SHORT).show();\r\n            else{\r\n                if(pass.equals(repass)){\r\n                    Boolean checkuser = DB.checkusername(user);\r\n                    if(!checkuser){\r\n                        Boolean insert = DB.insertData(user, pass);\r\n                        if(insert){\r\n                            UserData dbUserData = new UserData();\r\n                            dbUserData.setUsername(username.getText().toString());\r\n                            dbUserData.setPassword(password.getText().toString());\r\n                            DB.addUser(dbUserData);\r\n                            Toast.makeText(RegisterActivity.this, \"Registered successfully\", Toast.LENGTH_SHORT).show();\r\n                            Intent intent = new Intent(getApplicationContext(),LoginActivity.class);\r\n                            startActivity(intent);\r\n                        }else{\r\n                            Toast.makeText(RegisterActivity.this, \"Registration failed\", Toast.LENGTH_SHORT).show();\r\n                        }\r\n                    }\r\n                    else{\r\n                        Toast.makeText(RegisterActivity.this, \"User already exists! please sign in\", Toast.LENGTH_SHORT).show();\r\n                    }\r\n                }else{\r\n                    Toast.makeText(RegisterActivity.this, \"Passwords not matching\", Toast.LENGTH_SHORT).show();\r\n                }\r\n            } });\r\n\r\n        signin.setOnClickListener(view -> {\r\n            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);\r\n            startActivity(intent);\r\n        });\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/sg/edu/np/madapplcation/RegisterActivity.java	(revision e2c891cce98d07e2a08aebceb907d920a27dea5f)
++++ app/src/main/java/sg/edu/np/madapplcation/RegisterActivity.java	(date 1627477765887)
+@@ -2,30 +2,55 @@
+ 
+ import android.content.Intent;
+ import android.os.Bundle;
++import android.util.Patterns;
++import android.view.View;
+ import android.widget.Button;
+ import android.widget.EditText;
++import android.widget.ProgressBar;
++import android.widget.TextView;
+ import android.widget.Toast;
+ 
++import androidx.annotation.NonNull;
+ import androidx.appcompat.app.AppCompatActivity;
+ 
+-public class RegisterActivity extends AppCompatActivity {
++import com.google.android.gms.tasks.OnCompleteListener;
++import com.google.android.gms.tasks.Task;
++import com.google.firebase.auth.AuthResult;
++import com.google.firebase.auth.FirebaseAuth;
++import com.google.firebase.database.FirebaseDatabase;
++
++public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+ 
+-    EditText username, password, repassword;
+-    Button signup, signin;
+-    DBHelper DB;
++    private FirebaseAuth mAuth;
++
++    private TextView registerUser, signin;
++    private EditText editTextUsername, editTextEmail, editTextPassword;
++    private ProgressBar progressBar;
++    //DBHelper DB;
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_register);
+-        username = (EditText) findViewById(R.id.username);
+-        password = (EditText) findViewById(R.id.password);
+-        repassword = (EditText) findViewById(R.id.repassword);
+-        signup = (Button) findViewById(R.id.btnsignup);
++
++        mAuth = FirebaseAuth.getInstance();
++
++        editTextUsername = (EditText) findViewById(R.id.username);
++        editTextEmail = (EditText) findViewById(R.id.email);
++        editTextPassword = (EditText) findViewById(R.id.password);
++
++        registerUser = (Button) findViewById(R.id.registerUser);
++        registerUser.setOnClickListener(this);
++
+         signin = (Button) findViewById(R.id.btnsignin);
+-        DB = new DBHelper(this);
++        signin.setOnClickListener(this);
++
++        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+ 
+-        signup.setOnClickListener(view -> {
++        //DB = new DBHelper(this);
++
++
++       /* signup.setOnClickListener(view -> {
+             String user = username.getText().toString();
+             String pass = password.getText().toString();
+             String repass = repassword.getText().toString();
+@@ -60,6 +85,92 @@
+         signin.setOnClickListener(view -> {
+             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+             startActivity(intent);
+-        });
++        });*/
++    }
++
++    @Override
++    public void onClick(View v) {
++        switch (v.getId()){
++            case R.id.btnsignin:
++                startActivity(new Intent(this, MainActivity.class));
++                break;
++            case R.id.registerUser:
++                registerUser();
++                break;
++
++        }
++
++    }
++
++    private void registerUser(){
++        String email = editTextEmail.getText().toString().trim();
++        String username = editTextUsername.getText().toString().trim();
++        String password = editTextPassword.getText().toString().trim();
++
++        if (username.isEmpty()){
++            editTextUsername.setError("Please input a username!");
++            editTextUsername.requestFocus();
++            return;
++        }
++
++        if (email.isEmpty()){
++            editTextEmail.setError("Please input an email!");
++            editTextEmail.requestFocus();
++            return;
++        }
++
++        if (password.isEmpty()){
++            editTextPassword.setError("Please input a password!");
++            editTextPassword.requestFocus();
++            return;
++        }
++
++        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
++            editTextEmail.setError("Please provide a valid email!");
++            editTextEmail.requestFocus();
++            return;
++        }
++
++        if (password.length() < 6){
++            editTextPassword.setError("Min password length should be 6 characters!");
++            editTextPassword.requestFocus();
++            return;
++
++        }
++
++        progressBar.setVisibility(View.VISIBLE);
++        mAuth.createUserWithEmailAndPassword(email, password)
++                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
++                    @Override
++                    public void onComplete(@NonNull Task<AuthResult> task) {
++
++                        if (task.isSuccessful()){
++                            User user = new User(username, email);
++
++                            FirebaseDatabase.getInstance().getReference("UserData")
++                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
++                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
++                                @Override
++                                public void onComplete(@NonNull Task<Void> task) {
++
++                                    if (task.isSuccessful()){
++                                        Toast.makeText(RegisterActivity.this, "User had been registered successfully!", Toast.LENGTH_LONG).show();
++                                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
++
++                                    }else{
++                                        Toast.makeText(RegisterActivity.this, "Registration Failed! Try again!", Toast.LENGTH_LONG).show();
++                                    }
++                                    progressBar.setVisibility(View.GONE);
++                                }
++                            }) ;
++
++                        }else{
++                            Toast.makeText(RegisterActivity.this, "Registration Failed! Try again!", Toast.LENGTH_LONG).show();
++                            progressBar.setVisibility(View.GONE);
++                        }
++                    }
++                });
++
++
+     }
+ }
+Index: app/src/main/res/layout/activity_login.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#082c3c\"\r\n    tools:context=\".MainActivity\">\r\n\r\n    <EditText\r\n        android:id=\"@+id/editText_UserName\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:backgroundTint=\"#FFFFFF\"\r\n        android:ems=\"10\"\r\n        android:inputType=\"textPersonName\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textColorHint=\"#FFFFFF\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.805\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.287\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/editText_Password\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:backgroundTint=\"#FFFFFF\"\r\n        android:ems=\"10\"\r\n        android:inputType=\"textPersonName\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textColorHint=\"#FFFFFF\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.805\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.374\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/loginButton\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginBottom=\"54dp\"\r\n        android:background=\"@drawable/border\"\r\n        android:text=\"LOGIN\"\r\n        android:textColor=\"#082c3c\"\r\n        app:backgroundTint=\"#000000\"\r\n        app:backgroundTintMode=\"add\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.882\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView2\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Password:\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textSize=\"18sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.162\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.383\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView6\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:fontFamily=\"@font/vt323\"\r\n        android:scaleX=\"4\"\r\n        android:scaleY=\"4\"\r\n        android:text=\"MAD LAD\"\r\n        android:textColor=\"#FFFFFF\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.497\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.158\" />\r\n\r\n    <CheckBox\r\n        android:id=\"@+id/checkBoxRmb\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:backgroundTint=\"#FFFFFF\"\r\n        android:buttonTint=\"#FFFFFF\"\r\n        android:text=\"Remember me\"\r\n        android:textColor=\"#FFFFFF\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.16\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.461\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Username:\"\r\n        android:textColor=\"#FDFDFD\"\r\n        android:textSize=\"18sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.163\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.295\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView_NewUser\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"54dp\"\r\n        android:text=\"New user? Click here to register.\"\r\n        android:textColor=\"#FFFFFF\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.749\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_login.xml	(revision e2c891cce98d07e2a08aebceb907d920a27dea5f)
++++ app/src/main/res/layout/activity_login.xml	(date 1627477765906)
+@@ -8,7 +8,7 @@
+     tools:context=".MainActivity">
+ 
+     <EditText
+-        android:id="@+id/editText_UserName"
++        android:id="@+id/Email_Addr"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:backgroundTint="#FFFFFF"
+@@ -105,7 +105,7 @@
+         android:id="@+id/textView"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:text="Username:"
++        android:text="Email:"
+         android:textColor="#FDFDFD"
+         android:textSize="18sp"
+         android:textStyle="bold"
+@@ -116,6 +116,20 @@
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintVertical_bias="0.295" />
+ 
++    <TextView
++        android:id="@+id/textView_ForgotPassword"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="54dp"
++        android:text="Forgot Password."
++        android:textColor="#FFFFFF"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.498"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.500" />
++
+     <TextView
+         android:id="@+id/textView_NewUser"
+         android:layout_width="wrap_content"
+@@ -130,4 +144,16 @@
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintVertical_bias="0.749" />
+ 
++    <ProgressBar
++        android:id="@+id/progressBar"
++        style="?android:attr/progressBarStyleLarge"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_centerInParent="true"
++        android:visibility="gone"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/sg/edu/np/madapplcation/DBHelper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sg.edu.np.madapplcation;\r\n\r\nimport android.content.ContentValues;\r\nimport android.content.Context;\r\nimport android.database.Cursor;\r\nimport android.database.sqlite.SQLiteDatabase;\r\nimport android.database.sqlite.SQLiteOpenHelper;\r\n\r\npublic class DBHelper extends SQLiteOpenHelper {\r\n\r\n    public static final String DBNAME = \"Login.db\";\r\n\r\n    public DBHelper(Context context) {\r\n        super(context, \"Login.db\", null, 1);\r\n    }\r\n\r\n    @Override\r\n    public void onCreate(SQLiteDatabase db) {\r\n        db.execSQL(\"create Table users(Username TEXT primary key, password TEXT)\");\r\n    }\r\n\r\n    @Override\r\n    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {\r\n        db.execSQL(\"drop Table if exists users\");\r\n\r\n    }\r\n\r\n    public void addUser(UserData userData)\r\n    {\r\n        ContentValues values = new ContentValues();\r\n        values.put(\"username\", userData.getUsername());\r\n        values.put(\"password\", userData.getPassword());\r\n        SQLiteDatabase db = this.getWritableDatabase();\r\n        db.insert(\"users\", null,values);\r\n        db.close();\r\n    }\r\n\r\n    public Boolean insertData(String username, String password){\r\n        SQLiteDatabase db = this.getWritableDatabase();\r\n        ContentValues contentValues = new ContentValues();\r\n        contentValues.put(\"username\", username);\r\n        contentValues.put(\"password\", password);\r\n        long result = db.insert(\"users\", null, contentValues);\r\n        if(result == -1 ) return false;\r\n        else\r\n            return true;\r\n    }\r\n\r\n    public Boolean checkusername(String username){\r\n        SQLiteDatabase db = this.getWritableDatabase();\r\n        Cursor cursor = db.rawQuery(\"Select * from users where username = ?\", new String[] {username});\r\n        if(cursor.getCount()>0)\r\n            return true;\r\n        else\r\n            return false;\r\n    }\r\n\r\n    public Boolean checkusernamepassword(String username, String password){\r\n        SQLiteDatabase db = this.getWritableDatabase();\r\n        Cursor cursor = db.rawQuery(\"Select * from users where username = ? and password = ?\", new String[] {username,password});\r\n        if(cursor.getCount()>0)\r\n            return true;\r\n        else\r\n            return false;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/sg/edu/np/madapplcation/DBHelper.java	(revision e2c891cce98d07e2a08aebceb907d920a27dea5f)
++++ app/src/main/java/sg/edu/np/madapplcation/DBHelper.java	(date 1627477765900)
+@@ -25,11 +25,11 @@
+ 
+     }
+ 
+-    public void addUser(UserData userData)
++    public void addUser(User userData)
+     {
+         ContentValues values = new ContentValues();
+-        values.put("username", userData.getUsername());
+-        values.put("password", userData.getPassword());
++        //values.put("username", userData.getUsername());
++        //values.put("password", userData.getPassword());
+         SQLiteDatabase db = this.getWritableDatabase();
+         db.insert("users", null,values);
+         db.close();
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id 'com.android.application'\r\n}\r\n\r\nandroid {\r\n    compileSdkVersion 30\r\n    buildToolsVersion \"30.0.3\"\r\n\r\n    defaultConfig {\r\n        applicationId \"sg.edu.np.madapplcation\"\r\n        minSdkVersion 19\r\n        targetSdkVersion 30\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility JavaVersion.VERSION_1_8\r\n        targetCompatibility JavaVersion.VERSION_1_8\r\n    }\r\n}\r\n\r\ndependencies {\r\n\r\n    implementation 'androidx.appcompat:appcompat:1.3.0'\r\n    implementation 'com.google.android.material:material:1.3.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'\r\n    testImplementation 'junit:junit:4.+'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.2'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision e2c891cce98d07e2a08aebceb907d920a27dea5f)
++++ app/build.gradle	(date 1627477765872)
+@@ -1,5 +1,6 @@
+ plugins {
+     id 'com.android.application'
++    id 'com.google.gms.google-services'
+ }
+ 
+ android {
+@@ -33,6 +34,8 @@
+     implementation 'androidx.appcompat:appcompat:1.3.0'
+     implementation 'com.google.android.material:material:1.3.0'
+     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
++    implementation 'com.google.firebase:firebase-auth:19.2.0'
++    implementation 'com.google.firebase:firebase-database:20.0.1'
+     testImplementation 'junit:junit:4.+'
+     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+Index: app/src/main/java/sg/edu/np/madapplcation/LoginActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sg.edu.np.madapplcation;\r\n\r\nimport android.annotation.SuppressLint;\r\nimport android.content.Intent;\r\nimport android.content.SharedPreferences;\r\nimport android.os.Bundle;\r\nimport android.widget.Button;\r\nimport android.widget.CheckBox;\r\nimport android.widget.EditText;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\npublic class LoginActivity extends AppCompatActivity {\r\n\r\n    private final String TAG = \"MADApp\";\r\n    private final String FILENAME = \"MainActivity.java\";\r\n\r\n    private String username,password;\r\n    private EditText editUsername, editPassword;\r\n    private DBHelper DB;\r\n    private CheckBox rmbBox;\r\n    private Button login;\r\n    private SharedPreferences loginPreferences;\r\n    private SharedPreferences.Editor loginPrefsEditor;\r\n    private Boolean rememberMe;\r\n\r\n\r\n    @SuppressLint(\"ClickableViewAccessibility\")\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_login);\r\n\r\n        editUsername = (EditText) findViewById(R.id.editText_UserName);\r\n        editPassword = (EditText) findViewById(R.id.editText_Password);\r\n        DB = new DBHelper(this);\r\n        rmbBox = (CheckBox)findViewById(R.id.checkBoxRmb);\r\n        loginPreferences = getSharedPreferences(\"loginPrefs\", MODE_PRIVATE);\r\n        loginPrefsEditor = loginPreferences.edit();\r\n\r\n        rememberMe = loginPreferences.getBoolean(\"rememberMe\", false);\r\n        if (rememberMe) {\r\n            editUsername.setText(loginPreferences.getString(\"username\", \"\"));\r\n            editPassword.setText(loginPreferences.getString(\"password\", \"\"));\r\n            rmbBox.setChecked(true);\r\n        }\r\n\r\n        TextView newUser = findViewById(R.id.textView_NewUser);\r\n        newUser.setOnTouchListener((view, motionevent) -> {\r\n            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);\r\n            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);\r\n            startActivity(intent);\r\n            return false;\r\n        });\r\n\r\n        login = findViewById(R.id.loginButton);\r\n        login.setOnClickListener(view -> {\r\n\r\n            username = editUsername.getText().toString();\r\n            password = editPassword.getText().toString();\r\n\r\n            if (username.equals(\"\") || password.equals(\"\"))\r\n                Toast.makeText(LoginActivity.this, \"Please enter all the fields\", Toast.LENGTH_SHORT).show();\r\n            else {\r\n                Boolean checkuserpass = DB.checkusernamepassword(username, password);\r\n                if (checkuserpass) {\r\n                    Toast.makeText(LoginActivity.this, \"Sign in successful\", Toast.LENGTH_SHORT).show();\r\n                    Intent intent = new Intent(getApplicationContext(), ListActivity.class);\r\n                    if (rmbBox.isChecked()) {\r\n                        loginPrefsEditor.putBoolean(\"rememberMe\", true);\r\n                        loginPrefsEditor.putString(\"username\", username);\r\n                        loginPrefsEditor.putString(\"password\", password);\r\n                    } else {\r\n                        loginPrefsEditor.clear();\r\n                    }\r\n                    loginPrefsEditor.commit();\r\n                    startActivity(intent);\r\n                } else {\r\n                    Toast.makeText(LoginActivity.this, \"Invalid Credentials\", Toast.LENGTH_SHORT).show();\r\n                }\r\n            }\r\n        });\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/sg/edu/np/madapplcation/LoginActivity.java	(revision e2c891cce98d07e2a08aebceb907d920a27dea5f)
++++ app/src/main/java/sg/edu/np/madapplcation/LoginActivity.java	(date 1627477765895)
+@@ -4,27 +4,42 @@
+ import android.content.Intent;
+ import android.content.SharedPreferences;
+ import android.os.Bundle;
++import android.util.Patterns;
++import android.view.View;
+ import android.widget.Button;
+ import android.widget.CheckBox;
+ import android.widget.EditText;
++import android.widget.ProgressBar;
+ import android.widget.TextView;
+ import android.widget.Toast;
+ 
++import androidx.annotation.NonNull;
+ import androidx.appcompat.app.AppCompatActivity;
+ 
+-public class LoginActivity extends AppCompatActivity {
++import com.google.android.gms.tasks.OnCompleteListener;
++import com.google.android.gms.tasks.Task;
++import com.google.firebase.auth.AuthResult;
++import com.google.firebase.auth.FirebaseAuth;
++
++import org.w3c.dom.Text;
++
++public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+ 
+     private final String TAG = "MADApp";
+     private final String FILENAME = "MainActivity.java";
+ 
++    private TextView register;
++
+     private String username,password;
+-    private EditText editUsername, editPassword;
++    private EditText editTextEmail, editTextPassword;
+     private DBHelper DB;
+     private CheckBox rmbBox;
+     private Button login;
+     private SharedPreferences loginPreferences;
+     private SharedPreferences.Editor loginPrefsEditor;
+     private Boolean rememberMe;
++    private FirebaseAuth mAuth;
++    private ProgressBar progressBar;
+ 
+ 
+     @SuppressLint("ClickableViewAccessibility")
+@@ -33,21 +48,31 @@
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_login);
+ 
+-        editUsername = (EditText) findViewById(R.id.editText_UserName);
+-        editPassword = (EditText) findViewById(R.id.editText_Password);
+-        DB = new DBHelper(this);
+-        rmbBox = (CheckBox)findViewById(R.id.checkBoxRmb);
++        register = (TextView) findViewById(R.id.textView_NewUser);
++        register.setOnClickListener(this);
++
++        login = (Button) findViewById(R.id.loginButton);
++        login.setOnClickListener(this);
++
++        editTextEmail = (EditText) findViewById(R.id.Email_Addr);
++        editTextPassword = (EditText) findViewById(R.id.editText_Password);
++
++        progressBar = (ProgressBar) findViewById(R.id.progressBar);
++
++        mAuth = FirebaseAuth.getInstance();
++        //DB = new DBHelper(this);
++        /*rmbBox = (CheckBox)findViewById(R.id.checkBoxRmb);
+         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+         loginPrefsEditor = loginPreferences.edit();
+ 
+         rememberMe = loginPreferences.getBoolean("rememberMe", false);
+         if (rememberMe) {
+-            editUsername.setText(loginPreferences.getString("username", ""));
+-            editPassword.setText(loginPreferences.getString("password", ""));
++            editTextEmail.setText(loginPreferences.getString("username", ""));
++            editTextPassword.setText(loginPreferences.getString("password", ""));
+             rmbBox.setChecked(true);
+-        }
++        }*/
+ 
+-        TextView newUser = findViewById(R.id.textView_NewUser);
++        /*TextView newUser = findViewById(R.id.textView_NewUser);
+         newUser.setOnTouchListener((view, motionevent) -> {
+             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+@@ -80,6 +105,67 @@
+                 } else {
+                     Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                 }
++            }
++        });*/
++    }
++
++    @Override
++    public void onClick(View v) {
++        switch (v.getId()){
++            case R.id.textView_NewUser:
++                startActivity(new Intent(this, RegisterActivity.class));
++                break;
++            case R.id.loginButton:
++                UserLogin();
++                break;
++        }
++    }
++
++    private void UserLogin(){
++        String email = editTextEmail.getText().toString().trim();
++        String password = editTextPassword.getText().toString().trim();
++
++        if (email.isEmpty()){
++            editTextEmail.setError("Email is required!");
++            editTextEmail.requestFocus();
++            return;
++        }
++
++        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
++            editTextEmail.setError("Please enter a valid email!");
++            editTextEmail.requestFocus();
++            return;
++        }
++
++        if (password.isEmpty()){
++            editTextPassword.setError("Please input a password!");
++            editTextPassword.requestFocus();
++            return;
++        }
++
++        if (password.length() < 6){
++            editTextPassword.setError("Min password length should be 6 characters!");
++            editTextPassword.requestFocus();
++            return;
++
++        }
++
++        progressBar.setVisibility(View.VISIBLE);
++
++        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
++            @Override
++            public void onComplete(@NonNull Task<AuthResult> task) {
++
++                if (task.isSuccessful()){
++                    Toast.makeText(LoginActivity.this, "Sign in successful", Toast.LENGTH_SHORT).show();
++                    startActivity(new Intent(LoginActivity.this, ListActivity.class));
++                    progressBar.setVisibility(View.GONE);
++
++                }else{
++                    Toast.makeText(LoginActivity.this, "Failed to login! Please check your credentials!", Toast.LENGTH_LONG).show();
++                    progressBar.setVisibility(View.GONE);
++                }
++
+             }
+         });
+     }
+Index: app/src/main/java/sg/edu/np/madapplcation/UserData.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/sg/edu/np/madapplcation/UserData.java	(revision e2c891cce98d07e2a08aebceb907d920a27dea5f)
++++ app/src/main/java/sg/edu/np/madapplcation/UserData.java	(revision e2c891cce98d07e2a08aebceb907d920a27dea5f)
+@@ -1,29 +0,0 @@
+-package sg.edu.np.madapplcation;
+-
+-public class UserData {
+-    private String Username;
+-    private String Password;
+-
+-    public UserData(){
+-
+-    }
+-
+-    public UserData(String username, String password){
+-        this.Username = username;
+-        this.Password = password;
+-    }
+-
+-    public String getUsername() {
+-        return Username;
+-    }
+-
+-    public void setUsername(String username) {
+-        Username = username;
+-    }
+-
+-    public String getPassword() { return Password; }
+-
+-    public void setPassword(String password) {
+-        Password = password;
+-    }
+-}
+Index: app/src/main/java/sg/edu/np/madapplcation/User.java
+===================================================================
+--- app/src/main/java/sg/edu/np/madapplcation/User.java	(date 1627477765879)
++++ app/src/main/java/sg/edu/np/madapplcation/User.java	(date 1627477765879)
+@@ -0,0 +1,14 @@
++package sg.edu.np.madapplcation;
++
++public class User {
++    public String username, email;
++
++    public User(){
++
++    }
++
++    public User(String username, String email){
++        this.username = username;
++        this.email = email;
++    }
++}
+Index: app/google-services.json
+===================================================================
+--- app/google-services.json	(date 1627477765870)
++++ app/google-services.json	(date 1627477765870)
+@@ -0,0 +1,39 @@
++{
++  "project_info": {
++    "project_number": "670493994290",
++    "project_id": "mad-app-52dc1",
++    "storage_bucket": "mad-app-52dc1.appspot.com"
++  },
++  "client": [
++    {
++      "client_info": {
++        "mobilesdk_app_id": "1:670493994290:android:e522105b44191af15c7b2b",
++        "android_client_info": {
++          "package_name": "sg.edu.np.madapplcation"
++        }
++      },
++      "oauth_client": [
++        {
++          "client_id": "670493994290-4klkj2osmiu3nv9i0dcr2rhpacrobfr8.apps.googleusercontent.com",
++          "client_type": 3
++        }
++      ],
++      "api_key": [
++        {
++          "current_key": "AIzaSyC5R_4-UR0XQP1TPVwUvwZ7ALbqIGxYX4Q"
++        }
++      ],
++      "services": {
++        "appinvite_service": {
++          "other_platform_oauth_client": [
++            {
++              "client_id": "670493994290-4klkj2osmiu3nv9i0dcr2rhpacrobfr8.apps.googleusercontent.com",
++              "client_type": 3
++            }
++          ]
++        }
++      }
++    }
++  ],
++  "configuration_version": "1"
++}
+\ No newline at end of file
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\r\nbuildscript {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n    dependencies {\r\n        classpath 'com.android.tools.build:gradle:4.2.2'\r\n\r\n        // NOTE: Do not place your application dependencies here; they belong\r\n        // in the individual module build.gradle files\r\n    }\r\n}\r\n\r\nallprojects {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n}\r\n\r\ntask clean(type: Delete) {\r\n    delete rootProject.buildDir\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build.gradle	(revision e2c891cce98d07e2a08aebceb907d920a27dea5f)
++++ build.gradle	(date 1627477765842)
+@@ -6,6 +6,7 @@
+     }
+     dependencies {
+         classpath 'com.android.tools.build:gradle:4.2.2'
++        classpath 'com.google.gms:google-services:4.3.8'
+ 
+         // NOTE: Do not place your application dependencies here; they belong
+         // in the individual module build.gradle files
