@@ -1,0 +1,376 @@
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"sg.edu.np.madapplcation\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.MADApplcation\">\r\n        <activity android:name=\".LoginActivity\"></activity>\r\n        <activity android:name=\".HomeActivity\" />\r\n        <activity android:name=\".RegisterActivity\" />\r\n        <activity android:name=\".ListActivity\" />\r\n        <activity android:name=\".MainActivity\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 65b9a80577a1f438c928bd25abc9b6a52c6c6639)
++++ app/src/main/AndroidManifest.xml	(date 1627282553709)
+@@ -20,6 +20,10 @@
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+         </activity>
++
++        <meta-data
++            android:name="preloaded_fonts"
++            android:resource="@array/preloaded_fonts" />
+     </application>
+ 
+ </manifest>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_register.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".RegisterActivity\">\r\n\r\n    <EditText\r\n        android:id=\"@+id/username\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:ems=\"10\"\r\n        android:hint=\"User Name\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.118\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/password\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_below=\"@+id/username\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Password\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.233\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/repassword\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_below=\"@+id/password\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Retype Password\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.352\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/btnsignup\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Register\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.882\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.48\"\r\n        android:layout_below=\"@+id/repassword\"/>\r\n\r\n    <Button\r\n        android:id=\"@+id/btnsignin\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_below=\"@+id/btnsignup\"\r\n        android:text=\"Existing user! Go to Sign in page\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.604\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_register.xml	(revision 65b9a80577a1f438c928bd25abc9b6a52c6c6639)
++++ app/src/main/res/layout/activity_register.xml	(date 1627373330492)
+@@ -4,73 +4,102 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
++    android:background="#082c3c"
+     tools:context=".RegisterActivity">
+ 
++    <TextView
++        android:id="@+id/textView6"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:fontFamily="@font/vt323"
++        android:scaleX="4"
++        android:scaleY="4"
++        android:text="MAD LAD"
++        android:textColor="#FFFFFF"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.497"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.158" />
++
+     <EditText
+         android:id="@+id/username"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
++        android:layout_width="345dp"
++        android:layout_height="47dp"
++        android:backgroundTint="#FFFFFF"
+         android:ems="10"
+         android:hint="User Name"
++        android:textColor="#FFFFFF"
++        android:textColorHint="#FFFFFF"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.118" />
++        app:layout_constraintVertical_bias="0.299" />
+ 
+     <EditText
+         android:id="@+id/password"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
++        android:layout_width="345dp"
++        android:layout_height="47dp"
+         android:layout_below="@+id/username"
++        android:backgroundTint="#FFFFFF"
+         android:ems="10"
+         android:hint="Password"
++        android:textColor="#FFFFFF"
++        android:textColorHint="#FFFFFF"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.233" />
++        app:layout_constraintVertical_bias="0.407" />
+ 
+     <EditText
+         android:id="@+id/repassword"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
++        android:layout_width="345dp"
++        android:layout_height="47dp"
+         android:layout_below="@+id/password"
++        android:backgroundTint="#FFFFFF"
+         android:ems="10"
+         android:hint="Retype Password"
++        android:textColor="#FFFFFF"
++        android:textColorHint="#FFFFFF"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.352" />
++        app:layout_constraintVertical_bias="0.519" />
+ 
+     <Button
+         android:id="@+id/btnsignup"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
++        android:layout_width="345dp"
++        android:layout_height="47dp"
++        android:layout_below="@+id/repassword"
++        android:background="@drawable/border"
+         android:text="Register"
++        android:textColor="#082c3c"
++        app:backgroundTint="#000000"
++        app:backgroundTintMode="add"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.882"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.48"
+-        android:layout_below="@+id/repassword"/>
++        app:layout_constraintVertical_bias="0.714" />
+ 
+     <Button
+         android:id="@+id/btnsignin"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
++        android:layout_width="345dp"
++        android:layout_height="47dp"
+         android:layout_below="@+id/btnsignup"
++        android:background="@drawable/border"
+         android:text="Existing user! Go to Sign in page"
++        android:textColor="#082c3c"
++        app:backgroundTint="#000000"
++        app:backgroundTintMode="add"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.0"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.604" />
++        app:layout_constraintVertical_bias="0.817" />
+ 
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<adaptive-icon xmlns:android=\"http://schemas.android.com/apk/res/android\">\r\n    <background android:drawable=\"@drawable/ic_launcher_background\" />\r\n    <foreground android:drawable=\"@drawable/ic_launcher_foreground\" />\r\n</adaptive-icon>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml	(revision 65b9a80577a1f438c928bd25abc9b6a52c6c6639)
++++ app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml	(date 1627286687433)
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+-    <background android:drawable="@drawable/ic_launcher_background" />
+-    <foreground android:drawable="@drawable/ic_launcher_foreground" />
++    <background android:drawable="@color/ic_launcher_background"/>
++    <foreground android:drawable="@mipmap/ic_launcher_foregroundb"/>
+ </adaptive-icon>
+\ No newline at end of file
+Index: app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<adaptive-icon xmlns:android=\"http://schemas.android.com/apk/res/android\">\r\n    <background android:drawable=\"@drawable/ic_launcher_background\" />\r\n    <foreground android:drawable=\"@drawable/ic_launcher_foreground\" />\r\n</adaptive-icon>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml	(revision 65b9a80577a1f438c928bd25abc9b6a52c6c6639)
++++ app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml	(date 1627286687234)
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+-    <background android:drawable="@drawable/ic_launcher_background" />
+-    <foreground android:drawable="@drawable/ic_launcher_foreground" />
++    <background android:drawable="@color/ic_launcher_background"/>
++    <foreground android:drawable="@mipmap/ic_launcher_foregroundb"/>
+ </adaptive-icon>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_login.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".MainActivity\">\r\n\r\n    <EditText\r\n        android:id=\"@+id/editText_UserName\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:ems=\"10\"\r\n        android:inputType=\"textPersonName\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.805\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.287\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/editText_Password\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:ems=\"10\"\r\n        android:inputType=\"textPersonName\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.805\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.374\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/loginButton\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginBottom=\"54dp\"\r\n        android:text=\"LOGIN\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.882\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.48\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView2\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Password\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.177\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.377\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView6\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"MAD App\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.497\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.158\" />\r\n\r\n    <CheckBox\r\n        android:id=\"@+id/checkBoxRmb\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Remember me\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.216\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.442\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Username\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.178\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.293\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView_NewUser\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"54dp\"\r\n        android:text=\"New user? Click here to register.\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.749\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_login.xml	(revision 65b9a80577a1f438c928bd25abc9b6a52c6c6639)
++++ app/src/main/res/layout/activity_login.xml	(date 1627373581305)
+@@ -4,14 +4,18 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
++    android:background="#082c3c"
+     tools:context=".MainActivity">
+ 
+     <EditText
+         android:id="@+id/editText_UserName"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
++        android:backgroundTint="#FFFFFF"
+         android:ems="10"
+         android:inputType="textPersonName"
++        android:textColor="#FFFFFF"
++        android:textColorHint="#FFFFFF"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.805"
+@@ -23,8 +27,11 @@
+         android:id="@+id/editText_Password"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
++        android:backgroundTint="#FFFFFF"
+         android:ems="10"
+         android:inputType="textPersonName"
++        android:textColor="#FFFFFF"
++        android:textColorHint="#FFFFFF"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.805"
+@@ -37,31 +44,41 @@
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginBottom="54dp"
++        android:background="@drawable/border"
+         android:text="LOGIN"
++        android:textColor="#082c3c"
++        app:backgroundTint="#000000"
++        app:backgroundTintMode="add"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.882"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.48" />
++        app:layout_constraintTop_toTopOf="parent" />
+ 
+     <TextView
+         android:id="@+id/textView2"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:text="Password"
++        android:text="Password:"
++        android:textColor="#FFFFFF"
++        android:textSize="18sp"
++        android:textStyle="bold"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.177"
++        app:layout_constraintHorizontal_bias="0.162"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.377" />
++        app:layout_constraintVertical_bias="0.383" />
+ 
+     <TextView
+         android:id="@+id/textView6"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:text="MAD App"
++        android:fontFamily="@font/vt323"
++        android:scaleX="4"
++        android:scaleY="4"
++        android:text="MAD LAD"
++        android:textColor="#FFFFFF"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.497"
+@@ -73,25 +90,31 @@
+         android:id="@+id/checkBoxRmb"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
++        android:backgroundTint="#FFFFFF"
++        android:buttonTint="#FFFFFF"
+         android:text="Remember me"
++        android:textColor="#FFFFFF"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.216"
++        app:layout_constraintHorizontal_bias="0.16"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.442" />
++        app:layout_constraintVertical_bias="0.461" />
+ 
+     <TextView
+         android:id="@+id/textView"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:text="Username"
++        android:text="Username:"
++        android:textColor="#FDFDFD"
++        android:textSize="18sp"
++        android:textStyle="bold"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.178"
++        app:layout_constraintHorizontal_bias="0.163"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.293" />
++        app:layout_constraintVertical_bias="0.295" />
+ 
+     <TextView
+         android:id="@+id/textView_NewUser"
+@@ -99,6 +122,7 @@
+         android:layout_height="wrap_content"
+         android:layout_marginTop="54dp"
+         android:text="New user? Click here to register."
++        android:textColor="#FFFFFF"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.498"
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".MainActivity\">\r\n\r\n    <ImageView\r\n        android:id=\"@+id/logoImage\"\r\n        android:layout_width=\"128dp\"\r\n        android:layout_height=\"128dp\"\r\n        android:background=\"@drawable/ic_launcher_background\"\r\n        android:contentDescription=\"Image\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.499\"\r\n        app:srcCompat=\"@drawable/ic_launcher_foreground\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/appTitle\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:scaleX=\"3\"\r\n        android:scaleY=\"3\"\r\n        android:text=\"MAD Lad\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.345\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_main.xml	(revision 65b9a80577a1f438c928bd25abc9b6a52c6c6639)
++++ app/src/main/res/layout/activity_main.xml	(date 1627373414172)
+@@ -4,34 +4,18 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
++    android:background="#082c3c"
+     tools:context=".MainActivity">
+ 
+     <ImageView
+-        android:id="@+id/logoImage"
+-        android:layout_width="128dp"
+-        android:layout_height="128dp"
+-        android:background="@drawable/ic_launcher_background"
+-        android:contentDescription="Image"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.498"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.499"
+-        app:srcCompat="@drawable/ic_launcher_foreground" />
+-
+-    <TextView
+-        android:id="@+id/appTitle"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:scaleX="3"
+-        android:scaleY="3"
+-        android:text="MAD Lad"
++        android:id="@+id/imageView3"
++        android:layout_width="303dp"
++        android:layout_height="517dp"
++        android:contentDescription="MAD LAD Logo"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.498"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.345" />
+-
++        app:layout_constraintVertical_bias="0.369"
++        app:srcCompat="@mipmap/mad_lad_logo" />
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
