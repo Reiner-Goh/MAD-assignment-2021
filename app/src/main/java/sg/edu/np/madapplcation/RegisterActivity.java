@@ -4,30 +4,52 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class RegisterActivity extends AppCompatActivity {
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private FirebaseAuth mAuth;
     private String user, pass, repass;
-    private EditText regEditUsername, regEditPassword, regEditRePassword;
-    private Button signup, signin;
-    private DBHelper DB;
+    private TextView signup, signin;
+    private EditText regEditUsername, regEditEmail, regEditPassword;
+    private ProgressBar progressBar;
+    //private DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        mAuth = FirebaseAuth.getInstance();
+
         regEditUsername = (EditText) findViewById(R.id.editText_RegUserName);
+        regEditEmail = (EditText) findViewById(R.id.editText_RegEmail);
         regEditPassword = (EditText) findViewById(R.id.editText_RegPassword);
-        regEditRePassword = (EditText) findViewById(R.id.editText_RegRePassword);
+
         signup = (Button) findViewById(R.id.btnsignup);
+        signup.setOnClickListener(this);
+
         signin = (Button) findViewById(R.id.btnsignin);
-        DB = new DBHelper(this);
+        signin.setOnClickListener(this);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        //DB = new DBHelper(this);
 
         TextView showPass2 = findViewById(R.id.textView_ShowPass2);
         showPass2.setOnClickListener(v -> {
@@ -36,17 +58,17 @@ public class RegisterActivity extends AppCompatActivity {
             {
                 showPass2.setText("Reveal passwords");
                 regEditPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                regEditRePassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                //regEditRePassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
             }
             else if(showPass2.getText().equals("Reveal passwords"))
             {
                 showPass2.setText("Hide passwords");
                 regEditPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                regEditRePassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                //regEditRePassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
             }
         });
 
-        signup.setOnClickListener(view -> {
+        /*signup.setOnClickListener(view -> {
             user = regEditUsername.getText().toString();
             pass = regEditPassword.getText().toString();
             repass = regEditRePassword.getText().toString();
@@ -81,6 +103,91 @@ public class RegisterActivity extends AppCompatActivity {
         signin.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
-        });
+        });*/
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnsignin:
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+            case R.id.btnsignup:
+                registerUser();
+                break;
+
+        }
+
+    }
+
+    private void registerUser(){
+        String email = regEditEmail.getText().toString().trim();
+        String username = regEditUsername.getText().toString().trim();
+        String password = regEditPassword.getText().toString().trim();
+
+        if (username.isEmpty()){
+            regEditUsername.setError("Please input a username!");
+            regEditUsername.requestFocus();
+            return;
+        }
+
+        if (email.isEmpty()){
+            regEditEmail.setError("Please input an email!");
+            regEditEmail.requestFocus();
+            return;
+        }
+
+        if (password.isEmpty()){
+            regEditPassword.setError("Please input a password!");
+            regEditPassword.requestFocus();
+            return;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            regEditEmail.setError("Please provide a valid email!");
+            regEditEmail.requestFocus();
+            return;
+        }
+
+        if (password.length() < 6){
+            regEditPassword.setError("Min password length should be 6 characters!");
+            regEditPassword.requestFocus();
+            return;
+
+        }
+
+        progressBar.setVisibility(View.VISIBLE);
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if (task.isSuccessful()){
+                            UserData user = new UserData(username, email);
+
+                            FirebaseDatabase.getInstance().getReference("UserData")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+
+                                    if (task.isSuccessful()){
+                                        Toast.makeText(RegisterActivity.this, "User had been registered successfully!", Toast.LENGTH_LONG).show();
+                                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+
+                                    }else{
+                                        Toast.makeText(RegisterActivity.this, "Registration Failed! Try again!", Toast.LENGTH_LONG).show();
+                                    }
+                                    progressBar.setVisibility(View.GONE);
+                                }
+                            }) ;
+
+                        }else{
+                            Toast.makeText(RegisterActivity.this, "Registration Failed! Try again!", Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    }
+                });
+    }
+
 }

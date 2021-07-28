@@ -1,19 +1,20 @@
 package sg.edu.np.madapplcation;
 
 public class UserData {
-    private String Username;
-    private String Password;
+    public String Username;
+    public String Email;
+
 
     public UserData(){
 
     }
 
-    public UserData(String username, String password){
+    public UserData(String username, String email){
         this.Username = username;
-        this.Password = password;
+        this.Email = email;
     }
 
-    public String getUsername() {
+    /*public String getUsername() {
         return Username;
     }
 
@@ -21,9 +22,9 @@ public class UserData {
         Username = username;
     }
 
-    public String getPassword() { return Password; }
+    public String getPassword() { return Email; }
 
     public void setPassword(String password) {
-        Password = password;
-    }
+        Email = password;
+    }*/
 }

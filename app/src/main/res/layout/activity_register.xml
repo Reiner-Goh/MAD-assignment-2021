@@ -34,7 +34,7 @@
         android:backgroundTint="#FFFFFF"
         android:ems="10"
         android:fontFamily="@font/vt323"
-        android:hint="User Name"
+        android:hint="Username"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:textSize="24sp"
@@ -43,6 +43,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.299" />
+
+    <EditText
+        android:id="@+id/editText_RegEmail"
+        android:layout_width="345dp"
+        android:layout_height="47dp"
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:fontFamily="@font/vt323"
+        android:hint="Email"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.407" />
 
     <EditText
         android:id="@+id/editText_RegPassword"
@@ -61,32 +78,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.407" />
-
-    <EditText
-        android:id="@+id/editText_RegRePassword"
-        android:layout_width="345dp"
-        android:layout_height="47dp"
-        android:layout_below="@+id/editText_RegPassword"
-        android:backgroundTint="#FFFFFF"
-        android:ems="10"
-        android:fontFamily="@font/vt323"
-        android:hint="Retype Password"
-        android:inputType="textPassword"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.519" />
 
     <Button
         android:id="@+id/btnsignup"
         android:layout_width="345dp"
         android:layout_height="47dp"
-        android:layout_below="@+id/editText_RegRePassword"
+        android:layout_below="@+id/editText_RegPassword"
         android:background="@drawable/border"
         android:fontFamily="@font/vt323"
         android:text="Register"
