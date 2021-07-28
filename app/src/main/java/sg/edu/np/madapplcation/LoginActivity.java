@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private String username,password;
     private EditText editTextEmail, editTextPassword;
-    private DBHelper DB;
+    //private DBHelper DB;
     private CheckBox rmbBox;
     private Button login;
     private SharedPreferences loginPreferences;

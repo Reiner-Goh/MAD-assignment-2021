@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "670493994290",
+    "firebase_url": "https://mad-app-52dc1-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "mad-app-52dc1",
+    "storage_bucket": "mad-app-52dc1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:670493994290:android:e522105b44191af15c7b2b",
+        "android_client_info": {
+          "package_name": "sg.edu.np.madapplcation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "670493994290-4klkj2osmiu3nv9i0dcr2rhpacrobfr8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5R_4-UR0XQP1TPVwUvwZ7ALbqIGxYX4Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "670493994290-4klkj2osmiu3nv9i0dcr2rhpacrobfr8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
