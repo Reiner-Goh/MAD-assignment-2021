@@ -1,4 +1,5 @@
 # MAD LAD
+![logo](https://github.com/Reiner-Goh/MAD-assignment-2021/blob/main/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png?raw=true)
 
 ---
 
