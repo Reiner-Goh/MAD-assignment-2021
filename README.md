@@ -19,5 +19,7 @@ MAD LAD is an Android mobile application with a primary purpose of assisting use
 ### Setting up / Help
 
 Upon running the application, the user will be greeted by a login page. If the user does not have an account, he will be required to make one in order to access the features inside the application.
+
 Upon logging in, there will be an introduction screen that shows for 30 seconds. The user can choose to always skip this scene by clicking the checkbox on the bottom left hand corner.
+
 Afterwards, there will be a list of concepts that the user will see. By clicking on the title of each concept, the user will be brought onto a page where he/she can learn all about the selected topic.
