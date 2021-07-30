@@ -17,12 +17,17 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.security.crypto.EncryptedSharedPreferences;
+import androidx.security.crypto.MasterKeys;
 
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -35,7 +40,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private DBHelper DB;
     private CheckBox rmbBox;
     private Button login;
-    private SharedPreferences loginPreferences;
     private SharedPreferences.Editor loginPrefsEditor;
     private Boolean rememberMe;
     private FirebaseAuth mAuth;
@@ -62,7 +66,29 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mAuth = FirebaseAuth.getInstance();
         DB = new DBHelper(this);
         rmbBox = (CheckBox)findViewById(R.id.checkBoxRmb);
-        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+
+        String masterKeyAlias = null;
+        try {
+            masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        SharedPreferences loginPreferences = null;
+        try {
+            loginPreferences = EncryptedSharedPreferences.create(
+                    "loginprefs",
+                    masterKeyAlias,
+                    this,
+                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            );
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         loginPrefsEditor = loginPreferences.edit();
 
         rememberMe = loginPreferences.getBoolean("rememberMe", false);
@@ -186,7 +212,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     loginPrefsEditor.commit();
                     startActivity(new Intent(LoginActivity.this, InfoActivity.class));
                     progressBar.setVisibility(View.GONE);
-
+                    finish();
                 }else{
                     Toast.makeText(LoginActivity.this, "Failed to login! Please check your credentials!", Toast.LENGTH_LONG).show();
                     progressBar.setVisibility(View.GONE);

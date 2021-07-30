@@ -55,5 +55,6 @@ public class InfoActivity extends AppCompatActivity {
         }
         Intent intent = new Intent(InfoActivity.this, ListActivity.class);
         startActivity(intent);
+        finish();
     }
 }
