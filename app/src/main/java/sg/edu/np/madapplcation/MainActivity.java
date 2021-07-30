@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Timer timer;
 
+    // Splash screen page
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

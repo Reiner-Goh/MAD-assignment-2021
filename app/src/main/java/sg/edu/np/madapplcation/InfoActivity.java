@@ -20,6 +20,7 @@ public class InfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
+        // Create shared prefs for skip intro checkbox
         SharedPreferences preferences = getSharedPreferences("skipIntro", Context.MODE_PRIVATE);
         boolean toSkip = preferences.getBoolean("skip", false);
 

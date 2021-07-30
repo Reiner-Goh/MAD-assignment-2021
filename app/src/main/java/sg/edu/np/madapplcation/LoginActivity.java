@@ -67,6 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         DB = new DBHelper(this);
         rmbBox = (CheckBox)findViewById(R.id.checkBoxRmb);
 
+        // Encrypted shared prefs
         String masterKeyAlias = null;
         try {
             masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
@@ -91,6 +92,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         loginPrefsEditor = loginPreferences.edit();
 
+        // Remember me checkbox
         rememberMe = loginPreferences.getBoolean("rememberMe", false);
         if (rememberMe) {
             editEmail.setText(loginPreferences.getString("email", ""));
@@ -98,6 +100,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             rmbBox.setChecked(true);
         }
 
+        // Redirect to the registration page
         TextView newUser = findViewById(R.id.textView_NewUser);
         newUser.setOnTouchListener((view, motionevent) -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
@@ -106,6 +109,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return false;
         });
 
+        // Toggle show/hide password
         TextView showPass = findViewById(R.id.textView_ShowPass);
         showPass.setOnClickListener(v -> {
 
@@ -123,34 +127,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         email = editEmail.getText().toString();
         password = editPassword.getText().toString();
-
-        /*login = findViewById(R.id.loginButton);
-        login.setOnClickListener(view -> {
-
-            username = editUsername.getText().toString();
-            password = editPassword.getText().toString();
-
-            if (username.equals("") || password.equals(""))
-                Toast.makeText(LoginActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
-            else {
-                Boolean checkuserpass = DB.checkusernamepassword(username, password);
-                if (checkuserpass) {
-                    Toast.makeText(LoginActivity.this, "Sign in successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), InfoActivity.class);
-                    if (rmbBox.isChecked()) {
-                        loginPrefsEditor.putBoolean("rememberMe", true);
-                        loginPrefsEditor.putString("username", username);
-                        loginPrefsEditor.putString("password", password);
-                    } else {
-                        loginPrefsEditor.clear();
-                    }
-                    loginPrefsEditor.commit();
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });*/
     }
 
     @Override
@@ -165,6 +141,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    // Email/Password conditions
     private void UserLogin(){
         String email = editEmail.getText().toString().trim();
         String password = editPassword.getText().toString().trim();
@@ -191,11 +168,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             editEmail.setError("Min password length should be 6 characters!");
             editEmail.requestFocus();
             return;
-
         }
 
         progressBar.setVisibility(View.VISIBLE);
 
+        // Logging in/remember me checkbox
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
