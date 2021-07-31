@@ -187,7 +187,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         loginPrefsEditor.clear();
                     }
                     loginPrefsEditor.commit();
-                    startActivity(new Intent(LoginActivity.this, InfoActivity.class));
+                    startActivity(new Intent(LoginActivity.this, CommentActivity.class));
                     progressBar.setVisibility(View.GONE);
                     finish();
                 }else{
