@@ -5,15 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 
 public class WebsiteOfConcept extends AppCompatActivity {
 
 
     private WebView webView;
     private String concept;
-    public String GoToURL(String Concept) {
+    public String GoToURL(String Concept) { //check which concept is clicked and return respective link
         if (Concept.equals("Introduction to Android")) { // cant use '==' as '==' for java, c++ etc compares pointers (aka addresses whr the string is stored) which will nvr be the same. Equals method compares Strictly string
             return "https://google-developer-training.github.io/android-developer-fundamentals-course-concepts-v2/unit-1-get-started/lesson-1-build-your-first-app/1-0-c-introduction-to-android/1-0-c-introduction-to-android.html";
         }
@@ -45,15 +47,13 @@ public class WebsiteOfConcept extends AppCompatActivity {
             return "https://developer.android.com/studio/publish";
         }
     }
+    //set up the respective views and buttons as well as get intent data
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_website_of_concept);
         Intent receiveddata = getIntent();
         concept = receiveddata.getStringExtra("Concept");
-        Log.v("Websiteactivity", concept);
-        Log.v("Test", String.valueOf("Introduction to Android" == concept));
-        Log.v("Test", "--" + concept + "--");
         webView = findViewById(R.id.webView);
 
     }
@@ -66,9 +66,18 @@ public class WebsiteOfConcept extends AppCompatActivity {
     @Override
     protected void onResume() {
         webView.setWebViewClient(new WebViewClient());
-        webView.getSettings().setUserAgentString("Chrome/56.0.0 Mobile");
-        webView.loadUrl(GoToURL(concept));
+        webView.getSettings().setUserAgentString("Chrome/56.0.0 Mobile"); //allow user to view website
+        webView.loadUrl(GoToURL(concept)); //Load the website into the webview
         Log.v("Websiteactivity", GoToURL(concept));
+        Button LogOutConceptPage = findViewById(R.id.ConceptLogOut);
+        LogOutConceptPage.setOnClickListener(new View.OnClickListener() { //for logging out
+            @Override
+            public void onClick(View v) {
+                Intent LogOutFromContext = new Intent(WebsiteOfConcept.this, LoginActivity.class);
+                startActivity(LogOutFromContext);
+                finish(); //to ensure user cant go back
+            }
+        });
         super.onResume();
     }
 

@@ -5,9 +5,12 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
@@ -21,10 +24,10 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-        EditText searchbar = findViewById(R.id.search_bar);
+        EditText searchbar = findViewById(R.id.search_bar); // set up the respective widgets and buttons on the layout file
 
 
-
+        // adding concepts to a list
         conceptList.add(new Concept("Introduction to Android","Learning about android and android studio"));
         conceptList.add(new Concept("Introduction to Java","Learning about java programming language"));
         conceptList.add(new Concept("Basic of Activity","Learn what are activities, the building blocks of any app"));
@@ -36,13 +39,14 @@ public class ListActivity extends AppCompatActivity {
         conceptList.add(new Concept("Data and File Storage","Learn shared preferences, SQL database and more"));
         conceptList.add(new Concept("Managing Play Store Release","Learn how to publish your app to the Google Play Store"));
 
+        // setting up the recyclerview
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         ConceptAdaptor myAdaptor = new ConceptAdaptor(conceptList, this);
         LinearLayoutManager myLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(myLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(myAdaptor);
-        searchbar.addTextChangedListener(new TextWatcher() { //check for text change
+        searchbar.addTextChangedListener(new TextWatcher() { //check for text change for search bar
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -58,6 +62,42 @@ public class ListActivity extends AppCompatActivity {
                 filter(s.toString(), myAdaptor); //call filter function
             }
         });
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        Button LogOutButton = findViewById(R.id.LogOut);
+        LogOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent LoginPageIntent = new Intent(ListActivity.this, LoginActivity.class);
+                startActivity(LoginPageIntent);
+                finish();
+            }
+        });
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     private void filter(String text, ConceptAdaptor myAdaptor){
