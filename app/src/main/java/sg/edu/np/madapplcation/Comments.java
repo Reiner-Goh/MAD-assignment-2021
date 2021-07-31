@@ -3,40 +3,32 @@ package sg.edu.np.madapplcation;
 public class Comments {
 
     private String comment;
-    private String username;
-    private String commentid;
+    private String publisher;
 
-    public Comments(String comment, String username, String commentid) {
+
+    public Comments(String comment, String publisher) {
         this.comment = comment;
-        this.username = username;
-        this.commentid = commentid;
+        this.publisher = publisher;
+
     }
 
     public Comments() {
     }
 
     public String getComment() {
-            return comment;
-        }
+        return comment;
+    }
 
     public void setComment(String comment) {
         this.comment = comment;
     }
 
-    public String getUsername() {
-        return username;
+    public String getPublisher() {
+        return publisher;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getCommentid() {
-        return commentid;
-    }
-
-    public void setCommentid(String commentid) {
-        this.commentid = commentid;
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 
 }
