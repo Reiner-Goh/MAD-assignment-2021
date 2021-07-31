@@ -64,6 +64,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         forgotPassword = (TextView)findViewById(R.id.textView_ForgotPassword);
+        forgotPassword.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         DB = new DBHelper(this);

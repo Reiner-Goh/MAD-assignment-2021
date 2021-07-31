@@ -1,8 +1,7 @@
 package sg.edu.np.madapplcation;
 
 public class UserData {
-    private static String Username;
-    //public String Username;
+    public String Username;
     public String Email;
 
 
@@ -15,7 +14,7 @@ public class UserData {
         this.Email = email;
     }
 
-    public static String getUsername() {
+    public String getUsername() {
         return Username;
     }
 
