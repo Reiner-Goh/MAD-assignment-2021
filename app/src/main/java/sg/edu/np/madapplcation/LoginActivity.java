@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private final String TAG = "MADApp";
     private final String FILENAME = "MainActivity.java";
 
-    private TextView register;
+    private TextView register, forgotPassword;
     private String email,password;
     private EditText editEmail, editPassword;
     private DBHelper DB;
@@ -62,6 +62,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         editPassword = (EditText) findViewById(R.id.editText_Password);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        forgotPassword = (TextView)findViewById(R.id.textView_ForgotPassword);
+        forgotPassword.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         DB = new DBHelper(this);
@@ -128,7 +131,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         email = editEmail.getText().toString();
         password = editPassword.getText().toString();
     }
-
+    //To navigate the three button options
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -137,6 +140,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.loginButton:
                 UserLogin();
+                break;
+            case R.id.textView_ForgotPassword:
+                startActivity(new Intent(this, ForgotPassword.class));
                 break;
         }
     }
