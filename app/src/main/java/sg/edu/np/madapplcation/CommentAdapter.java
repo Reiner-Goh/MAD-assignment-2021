@@ -45,7 +45,7 @@ public class CommentAdapter extends FirebaseRecyclerAdapter<Comments, CommentAda
         // "person.class")to appropriate view in Card
         // view (here "person.xml")
         holder.userid.setText(model.getUserid());
-        getUserInfo(holder.userid);
+        /*getUserInfo(holder.userid);*/
 
         // Add lastname from model class (here
         // "person.class")to appropriate view in Card
@@ -84,7 +84,7 @@ public class CommentAdapter extends FirebaseRecyclerAdapter<Comments, CommentAda
         }
     }
 
-    private void getUserInfo(final TextView userid){
+    /*private void getUserInfo(final TextView userid){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
                 .child("UserData");
 
@@ -100,7 +100,7 @@ public class CommentAdapter extends FirebaseRecyclerAdapter<Comments, CommentAda
 
             }
         });
-    }
+    }*/
 }
 
 
