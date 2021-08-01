@@ -14,6 +14,14 @@ public class UserData {
         this.Email = email;
     }
 
+    public String getUsername() {
+        return Username;
+    }
+
+    public void setUsername(String username) {
+        this.Username = username;
+    }
+
     /*public String getUsername() {
         return Username;
     }
