@@ -74,6 +74,14 @@ public class ListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         Button LogOutButton = findViewById(R.id.LogOut);
+        Button CommentsButton = findViewById(R.id.CommentsButton);
+        CommentsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent CommentsPageIntent = new Intent(ListActivity.this, CommentActivity.class);
+                startActivity(CommentsPageIntent);
+            }
+        });
         LogOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
