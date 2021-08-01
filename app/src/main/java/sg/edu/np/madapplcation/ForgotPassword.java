@@ -51,7 +51,7 @@ public class ForgotPassword extends AppCompatActivity {
             return;
         }
         //Validate whether email is in database
-        if(Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             emailEditText.setError("Please provide a valid email");
             emailEditText.requestFocus();
             return;
