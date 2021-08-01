@@ -30,51 +30,79 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHolder> {
 
-    Context context;
+    private Context mContext;
+    private List<Comments> mComment;
 
-    ArrayList<Comments> list;
 
+    private FirebaseUser firebaseUser;
 
-    public CommentAdapter(Context context, ArrayList<Comments> list) {
-        this.context = context;
-        this.list = list;
+    public CommentAdapter(Context context, List<Comments> comments){
+        mContext = context;
+        mComment = comments;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.comment_item,parent,false);
+        View v = LayoutInflater.from(mContext).inflate(R.layout.comment_item,parent,false);
         return  new MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final CommentAdapter.MyViewHolder holder, int position) {
 
-        Comments comment = list.get(position);
-        holder.Username.setText(comment.getPublisher());
-        holder.Comment.setText(comment.getComment());
-        //holder.age.setText(user.getAge());
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        final Comments comment = mComment.get(position);
 
+        holder.comment.setText(comment.getComment());
+        getUserInfo(holder.image_profile, holder.username, comment.getPublisher());
+
+        holder.username.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(mContext, MainActivity.class);
+                intent.putExtra("publisherid", comment.getPublisher());
+                mContext.startActivity(intent);
+            }
+        });
 
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return mComment.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView Username, Comment;
+        public ImageView image_profile;
+        public TextView username, comment;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(View itemView) {
             super(itemView);
 
-            Username = itemView.findViewById(R.id.username);
-            Comment = itemView.findViewById(R.id.comment);
-            //age = itemView.findViewById(R.id.tvage);
-
+            username = itemView.findViewById(R.id.username);
+            comment = itemView.findViewById(R.id.comment);
         }
+    }
+
+    private void getUserInfo(final ImageView imageView, final TextView username, String publisherid){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
+                .child("Users").child(publisherid);
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                UserData user = dataSnapshot.getValue(UserData.class);
+                username.setText(user.getUsername());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 }

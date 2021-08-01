@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -72,6 +71,9 @@ public class CommentActivity extends AppCompatActivity {
                 }
             }
         });
+
+        getUsername();
+        readComments();
     }
 
     private void addComment(){
@@ -79,11 +81,32 @@ public class CommentActivity extends AppCompatActivity {
 
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("comment", addcomment.getText().toString());
-        hashMap.put("userid", firebaseUser.getUid());
+        hashMap.put("publisher", firebaseUser.getUid());
+
 
         reference.push().setValue(hashMap);
         addcomment.setText("");
+
+
     }
+
+    private void getUsername(){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                UserData user = dataSnapshot.getValue(UserData.class);
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("username", user.getUsername());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 
     private void readComments(){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Comments");
