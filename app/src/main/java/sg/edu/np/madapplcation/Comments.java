@@ -2,18 +2,23 @@ package sg.edu.np.madapplcation;
 
 public class Comments {
 
+    private String userid;
     private String comment;
-    private String publisher;
 
 
-    public Comments(String comment, String publisher) {
+    public Comments(String userid, String comment) {
+        this.userid = userid;
         this.comment = comment;
-        this.publisher = publisher;
+
 
     }
 
     public Comments() {
     }
+
+    public String getUserid(){return userid;}
+
+    public void setUserid(String userid){this.userid = userid;}
 
     public String getComment() {
         return comment;
@@ -23,12 +28,12 @@ public class Comments {
         this.comment = comment;
     }
 
-    public String getPublisher() {
+    /*public String getPublisher() {
         return publisher;
     }
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
-    }
+    }*/
 
 }

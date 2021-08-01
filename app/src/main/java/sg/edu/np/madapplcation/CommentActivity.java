@@ -25,6 +25,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import android.os.Bundle;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
 
 public class CommentActivity extends AppCompatActivity {
 
@@ -34,12 +43,17 @@ public class CommentActivity extends AppCompatActivity {
     private CommentAdapter commentAdapter;
     private List<Comments> commentList;*/
 
-    RecyclerView recyclerView;
     DatabaseReference database;
-    CommentAdapter myAdapter;
+    //CommentAdapter myAdapter;
     ArrayList<Comments> list;
 
     FirebaseUser firebaseUser;
+
+    private RecyclerView recyclerView;
+    CommentAdapter
+            adapter; // Create Object of the Adapter class
+    DatabaseReference mbase; // Create object of the
+    // Firebase Realtime Database
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,14 +65,38 @@ public class CommentActivity extends AppCompatActivity {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        // Create a instance of the database and get
+        // its reference
+        mbase = FirebaseDatabase.getInstance().getReference();
+
         recyclerView = findViewById(R.id.recycler_View);
+
+        // To display the Recycler view linearly
+        recyclerView.setLayoutManager(
+                new LinearLayoutManager(this));
+
+        // It is a class provide by the FirebaseUI to make a
+        // query in the database to fetch appropriate data
+        FirebaseRecyclerOptions<Comments> options
+                = new FirebaseRecyclerOptions.Builder<Comments>()
+                .setQuery(mbase, Comments.class)
+                .build();
+        // Connecting object of required Adapter class to
+        // the Adapter class itself
+        adapter = new CommentAdapter(options);
+        // Connecting Adapter class with the Recycler view*/
+        recyclerView.setAdapter(adapter);
+
+
+
+        /*recyclerView = findViewById(R.id.recycler_View);
         database = FirebaseDatabase.getInstance().getReference("Comments");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         list = new ArrayList<>();
         myAdapter = new CommentAdapter(this,list);
-        recyclerView.setAdapter(myAdapter);
+        recyclerView.setAdapter(myAdapter);*/
 
 
         post.setOnClickListener(new View.OnClickListener() {
@@ -72,8 +110,24 @@ public class CommentActivity extends AppCompatActivity {
             }
         });
 
-        getUsername();
-        readComments();
+        /*getUsername();
+        readComments();*/
+    }
+
+    // Function to tell the app to start getting
+    // data from database on starting of the activity
+    @Override protected void onStart()
+    {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    // Function to tell the app to stop getting
+    // data from database on stoping of the activity
+    @Override protected void onStop()
+    {
+        super.onStop();
+        adapter.stopListening();
     }
 
     private void addComment(){
@@ -81,7 +135,7 @@ public class CommentActivity extends AppCompatActivity {
 
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("comment", addcomment.getText().toString());
-        hashMap.put("publisher", firebaseUser.getUid());
+        hashMap.put("userid", firebaseUser.getUid());
 
 
         reference.push().setValue(hashMap);
@@ -90,7 +144,7 @@ public class CommentActivity extends AppCompatActivity {
 
     }
 
-    private void getUsername(){
+    /*private void getUsername(){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -128,7 +182,7 @@ public class CommentActivity extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 
 
 }

@@ -1,21 +1,16 @@
 package sg.edu.np.madapplcation;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,25 +18,74 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-import java.util.ArrayList;
 import java.util.List;
-import androidx.recyclerview.widget.RecyclerView;
 
-public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHolder> {
+public class CommentAdapter extends FirebaseRecyclerAdapter<Comments, CommentAdapter.MyViewHolder> {
 
-    private Context mContext;
+    /*private Context mContext;
     private List<Comments> mComment;
 
 
-    private FirebaseUser firebaseUser;
+    private FirebaseUser firebaseUser;*/
 
-    public CommentAdapter(Context context, List<Comments> comments){
-        mContext = context;
-        mComment = comments;
+    public CommentAdapter(@NonNull FirebaseRecyclerOptions<Comments> options) {
+        super(options);
     }
 
+    @Override
+    protected void
+    onBindViewHolder(@NonNull MyViewHolder holder,
+                     int position, @NonNull Comments model)
+    {
+
+        // Add firstname from model class (here
+        // "person.class")to appropriate view in Card
+        // view (here "person.xml")
+        holder.userid.setText(model.getUserid());
+
+        // Add lastname from model class (here
+        // "person.class")to appropriate view in Card
+        // view (here "person.xml")
+        holder.comment.setText(model.getComment());
+
+    }
+
+    // Function to tell the class about the Card view (here
+    // "person.xml")in
+    // which the data will be shown
     @NonNull
+    @Override
+    public MyViewHolder
+    onCreateViewHolder(@NonNull ViewGroup parent,
+                       int viewType)
+    {
+        View view
+                = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.comment_item, parent, false);
+        return new CommentAdapter.MyViewHolder(view);
+    }
+
+    // Sub Class to create references of the views in Crad
+    // view (here "person.xml")
+    class MyViewHolder
+            extends RecyclerView.ViewHolder {
+        TextView userid, comment;
+        public MyViewHolder(@NonNull View itemView)
+        {
+            super(itemView);
+
+            userid = itemView.findViewById(R.id.username);
+            comment = itemView.findViewById(R.id.comment);
+
+        }
+    }
+}
+
+
+    /*@NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext).inflate(R.layout.comment_item,parent,false);
@@ -55,14 +99,14 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
         final Comments comment = mComment.get(position);
 
         holder.comment.setText(comment.getComment());
-        getUserInfo(holder.image_profile, holder.username, comment.getPublisher());
+        getUserInfo(holder.image_profile, holder.username, comment.getUserid());
 
         holder.username.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent intent = new Intent(mContext, MainActivity.class);
-                intent.putExtra("publisherid", comment.getPublisher());
+                intent.putExtra("publisherid", comment.getUserid());
                 mContext.startActivity(intent);
             }
         });
@@ -103,9 +147,9 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
 
             }
         });
-    }
+    }*/
 
-}
+
 
     /*private Context mContext;
     private List<Comments> mComment;
