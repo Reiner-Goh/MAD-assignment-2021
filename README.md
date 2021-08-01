@@ -41,11 +41,17 @@ Afterwards, there will be a [list of concepts](https://i.imgur.com/sN7yj9g.png) 
 
 ### Ian Wee
 -Application design
+
 -Splash screen
+
 -Logging in & registering
+
 -Shared preferences (introduction screen) & encrypted shared preferences (email & password)
+
 -Information page
+
 -Readme
+
 
 ### Bing Chong
 
