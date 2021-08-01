@@ -51,3 +51,7 @@ Afterwards, there will be a [list of concepts](https://i.imgur.com/sN7yj9g.png) 
 ### Bing Chong
 
 ### Reiner Goh
+- Recyclerview of concepts
+- Webview for each concept
+- Searchbar
+- Log out and comment button
