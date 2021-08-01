@@ -49,11 +49,11 @@ Afterwards, there will be a [list of concepts](https://i.imgur.com/sN7yj9g.png) 
 
 
 ### Bing Chong
--Creating and connecting to Firebase
--Registering users
--Logging in 
--Forgot password
--Comments section(Adding and viewing comments)
+- Creating and connecting to Firebase
+- Registering users
+- Logging in 
+- Forgot password
+- Comments section(Adding and viewing comments)
 
 ### Reiner Goh
 - Recyclerview of concepts
