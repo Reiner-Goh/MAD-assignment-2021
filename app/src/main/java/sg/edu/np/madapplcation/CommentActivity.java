@@ -67,7 +67,7 @@ public class CommentActivity extends AppCompatActivity {
 
         // Create a instance of the database and get
         // its reference
-        mbase = FirebaseDatabase.getInstance().getReference();
+        mbase = FirebaseDatabase.getInstance().getReference("Comments");
 
         recyclerView = findViewById(R.id.recycler_View);
 
