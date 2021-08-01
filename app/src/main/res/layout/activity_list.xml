@@ -10,8 +10,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="470dp"
-        android:layout_height="533dp"
+        android:layout_width="427dp"
+        android:layout_height="525dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
@@ -38,8 +38,8 @@
 
     <Button
         android:id="@+id/LogOut"
-        android:layout_width="215dp"
-        android:layout_height="49dp"
+        android:layout_width="148dp"
+        android:layout_height="45dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/border"
         android:fontFamily="@font/vt323"
@@ -50,7 +50,28 @@
         app:backgroundTintMode="add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.178"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        app:layout_constraintVertical_bias="0.382" />
+
+    <Button
+        android:id="@+id/CommentsButton"
+        android:layout_width="148dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border"
+        android:fontFamily="@font/vt323"
+        android:text="Comments"
+        android:textColor="#082c3c"
+        android:textSize="20sp"
+        app:backgroundTint="#000000"
+        app:backgroundTintMode="add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.825"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        app:layout_constraintVertical_bias="0.392" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

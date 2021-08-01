@@ -1,0 +1,67 @@
+Index: app/src/main/java/sg/edu/np/madapplcation/Concept.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sg.edu.np.madapplcation;\r\n\r\npublic class Concept {\r\n\r\n    private String Concept;\r\n    private String Description;\r\n\r\n\r\n\r\n    public String getDescription() {\r\n        return Description;\r\n    }\r\n\r\n    public void setDescription(String description) {\r\n        Description = description;\r\n    }\r\n\r\n\r\n\r\n    public String getConcept() {\r\n        return Concept;\r\n    }\r\n\r\n    public void setConcept(String concept) {\r\n        Concept = concept;\r\n    }\r\n\r\n    public Concept(String concept, String description) {\r\n        Concept = concept;\r\n        Description = description;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/sg/edu/np/madapplcation/Concept.java	(revision 11f22818a7998769be14ef7f9b1d84442b1e0c75)
++++ app/src/main/java/sg/edu/np/madapplcation/Concept.java	(date 1627739411884)
+@@ -4,6 +4,7 @@
+ 
+     private String Concept;
+     private String Description;
++    private String Comment;
+ 
+ 
+ 
+@@ -15,7 +16,13 @@
+         Description = description;
+     }
+ 
++    public String getComment() {
++        return Comment;
++    }
+ 
++    public void setComment(String comment) {
++        Comment = comment;
++    }
+ 
+     public String getConcept() {
+         return Concept;
+@@ -25,8 +32,9 @@
+         Concept = concept;
+     }
+ 
+-    public Concept(String concept, String description) {
++    public Concept(String concept, String description, String comment) {
+         Concept = concept;
+         Description = description;
++        Comment = comment;
+     }
+ }
+Index: app/src/main/java/sg/edu/np/madapplcation/UserData.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sg.edu.np.madapplcation;\r\n\r\npublic class UserData {\r\n    public String Username;\r\n    public String Email;\r\n\r\n\r\n    public UserData(){\r\n\r\n    }\r\n\r\n    public UserData(String username, String email){\r\n        this.Username = username;\r\n        this.Email = email;\r\n    }\r\n\r\n    /*public String getUsername() {\r\n        return Username;\r\n    }\r\n\r\n    public void setUsername(String username) {\r\n        Username = username;\r\n    }\r\n\r\n    public String getPassword() { return Email; }\r\n\r\n    public void setPassword(String password) {\r\n        Email = password;\r\n    }*/\r\n}\r\n
+===================================================================
+--- app/src/main/java/sg/edu/np/madapplcation/UserData.java	(revision 11f22818a7998769be14ef7f9b1d84442b1e0c75)
++++ app/src/main/java/sg/edu/np/madapplcation/UserData.java	(date 1627735085317)
+@@ -14,6 +14,14 @@
+         this.Email = email;
+     }
+ 
++    public String getUsername() {
++        return Username;
++    }
++
++    public void setUsername(String username) {
++        this.Username = username;
++    }
++
+     /*public String getUsername() {
+         return Username;
+     }
+diff --git .idea/shelf/Uncommitted_changes_before_Checkout_at_28_7_2021_1_44_AM__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Checkout_at_28_7_2021_1_44_AM__Default_Changelist_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Checkout_at_28_7_2021_9_13_PM__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Checkout_at_28_7_2021_9_13_PM__Default_Changelist_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Update_at_28_7_2021_9_13_PM__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Update_at_28_7_2021_9_13_PM__Default_Changelist_.xml
