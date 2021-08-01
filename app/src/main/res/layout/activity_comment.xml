@@ -37,15 +37,14 @@
         app:layout_constraintHorizontal_bias="0.825"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recycler_View"
-        app:layout_constraintVertical_bias="0.392" />/>
+        app:layout_constraintVertical_bias="0.392" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/post"
         android:text="POST"
-        android:background="@android:color/white"
-        android:textColor="#082c3c"
+        android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:layout_marginEnd="5dp"
         android:layout_alignParentEnd="true"
@@ -54,7 +53,7 @@
         app:layout_constraintHorizontal_bias="0.825"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recycler_View"
-        app:layout_constraintVertical_bias="0.392" />/>
+        app:layout_constraintVertical_bias="0.392" />
 
    <!-- <RelativeLayout
         android:layout_width="match_parent"
