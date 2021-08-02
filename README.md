@@ -24,6 +24,8 @@ MAD LAD is an Android mobile application with a primary purpose of assisting use
 - Secure sign-in and registration
 - Organized list of concepts for the user's convenience
 - Easily sortable via a search bar
+- Comment section
+- Account management
 
 ---
 
